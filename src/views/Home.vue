@@ -2,7 +2,7 @@
     <section>
         <h1> Buttons </h1>
         <div>
-          <o-button label="Simple" root-class="pippo" />
+          <o-button label="Simple" />
           <o-button label="Rounded" rounded />
           <o-button label="Outlined" outlined />
           <o-button label="Disabled" disabled />
