@@ -109,7 +109,7 @@ export default Vue.extend({
     };
   },
   watch: {
-    file: function (newFile, oldFile) {
+    file (newFile, oldFile) {
       this.recipe.image = window.URL.createObjectURL(newFile)
     },
   },

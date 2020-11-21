@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container mx-auto px-12">
+  <div id="app" class="container mx-auto px-8 sm:px-12">
     <div class="header">
       <div>TailwindCSS 2 + Oruga Demo</div>
       <div>
