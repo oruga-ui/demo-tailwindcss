@@ -3,11 +3,27 @@
 @tailwind utilities;
 
 h1 {
-    @apply text-2xl;
+    @apply text-4xl sm:text-6xl lg:text-7xl leading-none font-extrabold tracking-tight text-gray-900 mt-10 mb-8 sm:mt-14 sm:mb-10;
 }
 h2 {
-    @apply text-xl;
+    @apply text-3xl;
 }
 h3 {
     @apply text-lg;
+}
+
+.header {
+    @apply border-b border-gray-200 py-6 flex items-center justify-between mb-16 sm:mb-20 -mx-4 px-4 sm:mx-0 sm:px-0;
+}
+
+.intro {
+    @apply max-w-screen-lg text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11;
+}
+
+.w-18 {
+    width: 4.5rem;
+}
+
+.h-18 {
+    height: 4.5rem;
 }

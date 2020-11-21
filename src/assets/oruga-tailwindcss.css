@@ -40,3 +40,7 @@
 .dropdown-item {
     @apply relative block no-underline px-1 py-2 cursor-pointer;
 }
+
+.switch {
+    @apply inline-flex items-center px-0.5 rounded-full w-1 h-9 transition-colors duration-200;
+}
