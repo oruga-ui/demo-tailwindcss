@@ -36,7 +36,6 @@ const store = new Vuex.Store({
         time: 20,
         difficulty: "Easy",
         servings: 4,
-        rating: "4.95",
         procedure: "My recipe for Hank’s Juiciest Beef Burger",
         image: "https://tailwindcss.com/_next/static/media/jucy-beef-burger.032c3c262707ccb9636fb3c909efeaf6.jpg",
         isFeatured: true
@@ -46,8 +45,7 @@ const store = new Vuex.Store({
         author: "Nicholas Denver",
         time: 30,
         difficulty: "Easy",
-        servings: 4,
-        rating: "4.95",
+        servings: 5,
         procedure: "Southern Fried Chicken Sandwich",
         image: "https://tailwindcss.com/_next/static/media/chicken-sandwich.cdedaf24984d883d5ed1fd3de8f49ec3.jpg",
         isFeatured: true
@@ -55,10 +53,9 @@ const store = new Vuex.Store({
       {
         title: "Lily’s Healthy Beef Burger",
         author: "Lily Ford",
-        time: 20,
+        time: 10,
         difficulty: "Easy",
         servings: 4,
-        rating: "4.95",
         procedure: "Lily’s Healthy Beef Burger recipe",
         image: "https://tailwindcss.com/_next/static/media/healthy-beef-burger.e735f49f7da4c92099f8811abf828ea8.jpg"
       }
