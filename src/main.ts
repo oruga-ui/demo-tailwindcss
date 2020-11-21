@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
 import App from './App.vue'
 import router from './router'
 
@@ -23,6 +24,47 @@ library.add(fas);
 library.add(fab);
 
 Vue.component('vue-fontawesome', FontAwesomeIcon);
+
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+  state: {
+    recipes: [
+      {
+        title: "Hank’s Juiciest Beef Burger",
+        time: "20",
+        difficulty: "Easy",
+        servings: "4",
+        rating: "4.95",
+        procedure: "My recipe for Hank’s Juiciest Beef Burger",
+        image: "https://tailwindcss.com/_next/static/media/jucy-beef-burger.032c3c262707ccb9636fb3c909efeaf6.jpg"
+      },
+      {
+        title: "Southern Fried Chicken Sandwich",
+        time: "30",
+        difficulty: "Easy",
+        servings: "4",
+        rating: "4.95",
+        procedure: "Southern Fried Chicken Sandwich",
+        image: "https://tailwindcss.com/_next/static/media/chicken-sandwich.cdedaf24984d883d5ed1fd3de8f49ec3.jpg"
+      },
+      {
+        title: "Lily’s Healthy Beef Burger",
+        time: "20",
+        difficulty: "Easy",
+        servings: "4",
+        rating: "4.95",
+        procedure: "Lily’s Healthy Beef Burger recipe",
+        image: "https://tailwindcss.com/_next/static/media/healthy-beef-burger.e735f49f7da4c92099f8811abf828ea8.jpg"
+      }
+    ],
+  },
+  mutations: {
+    addRecipe (state, recipe) {
+      state.recipes.push(recipe)
+    }
+  }
+})
 
 Vue.use(Oruga, {
   iconPack: 'fas',
@@ -65,5 +107,6 @@ Vue.component('dark-mode-switch', DarkModeSwitch);
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')

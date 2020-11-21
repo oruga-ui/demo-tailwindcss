@@ -8,7 +8,7 @@
           id="name"
           type="text"
           placeholder="Name"
-          v-model="recipe.name"
+          v-model="recipe.title"
         />
       </o-field>
     </div>
@@ -88,7 +88,7 @@ export default Vue.extend({
     return {
       file: null,
       recipe: {
-        name: "",
+        title: "",
         time: 0,
         image: null,
         servings: 1,
@@ -104,7 +104,15 @@ export default Vue.extend({
   },
   methods: {
     addRecipe() {
-      console.log(this.recipe);
+      this.$store.commit('addRecipe', this.recipe)
+      this.recipe = {
+        title: "",
+        time: 0,
+        image: null,
+        servings: 1,
+        difficulty: "easy",
+        procedure: "",
+      }
     },
   },
 });

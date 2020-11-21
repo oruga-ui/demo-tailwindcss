@@ -1,13 +1,13 @@
 <template>
   <div class="divide-y divide-gray-100">
     <div>
-      <o-radio v-model="radio" name="name" native-value="Flint">
+      <o-radio v-model="radio" name="name" native-value="featured">
         Featured
       </o-radio>
-      <o-radio v-model="radio" name="name" native-value="Silver">
-        Popular
+      <o-radio v-model="radio" name="name" native-value="faster">
+        Faster
       </o-radio>
-      <o-radio v-model="radio" name="name" native-value="Jack">
+      <o-radio v-model="radio" name="name" native-value="recent">
         Recent
       </o-radio>
     </div>
@@ -15,7 +15,7 @@
       <o-collapse
         class="card"
         animation="slide"
-        v-for="(recipe, index) of recipes"
+        v-for="(recipe, index) of $store.state.recipes"
         :key="index"
         :open="isOpen == index"
         @open="isOpen = index"
@@ -69,7 +69,7 @@
         </article>
         <div class="card-content">
           <div class="content">
-            {{ recipe.text }}
+            {{ recipe.procedure }}
           </div>
         </div>
       </o-collapse>
@@ -84,36 +84,7 @@ export default Vue.extend({
   data() {
     return {
       isOpen: 0,
-      radio: 0,
-      recipes: [
-        {
-          title: "Hank’s Juiciest Beef Burger",
-          time: "20",
-          difficulty: "Easy",
-          servings: "4",
-          rating: "4.95",
-          text: "My recipe for Hank’s Juiciest Beef Burger",
-          image: "https://tailwindcss.com/_next/static/media/jucy-beef-burger.032c3c262707ccb9636fb3c909efeaf6.jpg"
-        },
-        {
-          title: "Southern Fried Chicken Sandwich",
-          time: "30",
-          difficulty: "Easy",
-          servings: "4",
-          rating: "4.95",
-          text: "Southern Fried Chicken Sandwich",
-          image: "https://tailwindcss.com/_next/static/media/chicken-sandwich.cdedaf24984d883d5ed1fd3de8f49ec3.jpg"
-        },
-        {
-          title: "Lily’s Healthy Beef Burger",
-          time: "20",
-          difficulty: "Easy",
-          servings: "4",
-          rating: "4.95",
-          text: "Lily’s Healthy Beef Burger recipe",
-          image: "https://tailwindcss.com/_next/static/media/healthy-beef-burger.e735f49f7da4c92099f8811abf828ea8.jpg"
-        }
-      ],
+      radio: 0
     };
   },
 });
