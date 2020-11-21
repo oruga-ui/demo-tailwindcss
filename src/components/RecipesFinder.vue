@@ -48,7 +48,7 @@
                 <dd>· {{ recipe.servings }} servings</dd>
               </div>
               <div class="flex-none w-full mt-0.5 font-normal">
-                <dt class="inline">By</dt>
+                <dt class="inline">By </dt>
                 <dd class="inline text-black">{{ recipe.author }}</dd>
               </div>
               <div
@@ -83,7 +83,7 @@ export default Vue.extend({
   name: "RecipesFinder",
   data() {
     return {
-      isOpen: 0,
+      isOpen: -1,
       radio: 0
     };
   },

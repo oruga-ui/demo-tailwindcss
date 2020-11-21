@@ -12,6 +12,16 @@
         />
       </o-field>
     </div>
+    <div class="mb-4 col-start-1 md:col-end-3">
+      <o-field label="Author" label-for="author">
+        <o-input
+          id="author"
+          type="text"
+          placeholder="Author"
+          v-model="recipe.author"
+        />
+      </o-field>
+    </div>
     <div class="mb-4 col-start-1">
       <o-field label="Time (in minutes)" label-for="time">
         <o-input
@@ -89,6 +99,7 @@ export default Vue.extend({
       file: null,
       recipe: {
         title: "",
+        author: "",
         time: 0,
         image: null,
         servings: 1,
@@ -107,6 +118,7 @@ export default Vue.extend({
       this.$store.commit('addRecipe', this.recipe)
       this.recipe = {
         title: "",
+        author: "",
         time: 0,
         image: null,
         servings: 1,

@@ -32,6 +32,7 @@ const store = new Vuex.Store({
     recipes: [
       {
         title: "Hank’s Juiciest Beef Burger",
+        author: "Hank Douglas",
         time: "20",
         difficulty: "Easy",
         servings: "4",
@@ -41,6 +42,7 @@ const store = new Vuex.Store({
       },
       {
         title: "Southern Fried Chicken Sandwich",
+        author: "Nicholas Denver",
         time: "30",
         difficulty: "Easy",
         servings: "4",
@@ -50,6 +52,7 @@ const store = new Vuex.Store({
       },
       {
         title: "Lily’s Healthy Beef Burger",
+        author: "Lily Ford",
         time: "20",
         difficulty: "Easy",
         servings: "4",
