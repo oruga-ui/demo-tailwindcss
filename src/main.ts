@@ -25,6 +25,7 @@ library.add(fab);
 Vue.component('vue-fontawesome', FontAwesomeIcon);
 
 Vue.use(Oruga, {
+  iconPack: 'fas',
   iconComponent: 'vue-fontawesome',
   statusIcon: false,
   button: {
