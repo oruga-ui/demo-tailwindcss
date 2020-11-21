@@ -1,21 +1,21 @@
 <template>
   <div class="divide-y divide-gray-100">
     <div>
-      <o-radio v-model="radio" name="name" native-value="featured">
+      <o-radio v-model="filter" name="all" native-value="all">
+        All
+      </o-radio>
+      <o-radio v-model="filter" name="featured" native-value="featured">
         Featured
       </o-radio>
-      <o-radio v-model="radio" name="name" native-value="faster">
+      <o-radio v-model="filter" name="faster" native-value="faster">
         Faster
-      </o-radio>
-      <o-radio v-model="radio" name="name" native-value="recent">
-        Recent
       </o-radio>
     </div>
     <div>
       <o-collapse
         class="card"
         animation="slide"
-        v-for="(recipe, index) of $store.state.recipes"
+        v-for="(recipe, index) of filteredRecipes"
         :key="index"
         :open="isOpen == index"
         @open="isOpen = index"
@@ -48,7 +48,7 @@
                 <dd>· {{ recipe.servings }} servings</dd>
               </div>
               <div class="flex-none w-full mt-0.5 font-normal">
-                <dt class="inline">By </dt>
+                <dt class="inline">By</dt>
                 <dd class="inline text-black">{{ recipe.author }}</dd>
               </div>
               <div
@@ -81,10 +81,26 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: "RecipesFinder",
+  computed: {
+    filteredRecipes() {
+      switch (this.filter) {
+        case "featured":
+          return this.$store.state.recipes.filter((recipe) => {
+            return recipe.isFeatured;
+          });
+          break;
+        case "faster":
+          return this.$store.state.recipes.sort((a, b) => a.time - b.time);
+          break;
+        default:
+          return this.$store.state.recipes;
+      }
+    },
+  },
   data() {
     return {
       isOpen: -1,
-      radio: 0
+      filter: 'all',
     };
   },
 });
