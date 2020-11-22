@@ -23,22 +23,24 @@
       </o-field>
     </div>
     <div class="mb-4 col-start-1">
-      <o-field label="Time (in minutes)" label-for="time">
+      <o-field label="Time (in minutes)" label-for="time" :variant="errors.time ? 'danger' : ''" :message="errors.time">
         <o-input
           id="time"
           type="number"
           placeholder="Time"
-          v-model="recipe.time"
+          v-model.number="recipe.time"
+          min="1"
         />
       </o-field>
     </div>
     <div class="mb-4">
-      <o-field label="Servings" label-for="servings">
+      <o-field label="Servings" label-for="servings" :variant="errors.servings ? 'danger' : ''" :message="errors.servings">
         <o-input
           id="servings"
           type="number"
           placeholder="Servings"
-          v-model="recipe.servings"
+          v-model.number="recipe.servings"
+          min="1"
         />
       </o-field>
     </div>
@@ -102,7 +104,7 @@ export default Vue.extend({
       recipe: {
         title: null,
         author: null,
-        time: 0,
+        time: 5,
         image: null,
         servings: 1,
         difficulty: "easy",
@@ -113,6 +115,8 @@ export default Vue.extend({
         author: null,
         image: null,
         procedure: null,
+        time: null,
+        servings: null
       }
     };
   },
@@ -127,7 +131,13 @@ export default Vue.extend({
       for (const key in this.errors) {
         this.errors[key] = null;
         if (!this.recipe[key]) {
-          this.errors[key] = 'This field cannot be empty'
+          this.errors[key] = 'This field cannot be empty';
+          isValid = false;
+        }
+        console.log(this.recipe[key])
+        if ((key === 'servings' || key === 'time') && this.recipe[key] < 1) {
+          console.log('entra')
+          this.errors[key] = 'This field should be at least 1';
           isValid = false;
         }
       }
