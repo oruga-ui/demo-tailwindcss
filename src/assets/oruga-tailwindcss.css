@@ -38,6 +38,10 @@
   @apply bg-black;
 }
 
+.o-switch input[type=checkbox]:checked + .o-switch-check {
+  @apply bg-black dark:bg-purple-700;
+}
+
 .loading-background {
   background: rgba(255,255,255,0.6);
 }

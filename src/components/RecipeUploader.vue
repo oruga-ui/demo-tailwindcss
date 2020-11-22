@@ -74,6 +74,7 @@
     <div class="mb-4 col-start-1 md:col-end-3">
       <o-field label="Procedure" label-for="procedure" :variant="errors.procedure ? 'danger' : ''" :message="errors.procedure">
         <o-input
+          inputClass="h-48"
           id="procedure"
           type="textarea"
           placeholder="How to make your recipe step by step"
@@ -167,9 +168,3 @@ export default Vue.extend({
   },
 });
 </script>
-
-<style>
-#procedure {
-  height: 12rem;
-}
-</style>
