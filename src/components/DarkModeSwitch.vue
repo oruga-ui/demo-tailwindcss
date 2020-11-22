@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <o-icon icon="sun"></o-icon>
+  <div class="text-gray-400">
+    <o-icon icon="sun" :class="{'text-yellow-400' : !darkMode}"></o-icon>
     <o-switch size="small" v-model="darkMode">Switch</o-switch>
-    <o-icon icon="moon"></o-icon>
+    <o-icon icon="moon" :class="{'text-blue-400' : darkMode}"></o-icon>
   </div>
 </template>
 <script>
@@ -24,11 +24,11 @@ export default Vue.extend({
         : window.matchMedia("(prefers-color-scheme: dark)").matches;
   },
   watch: {
-    darkMode(isDarkNew, isDarkOld) {
-      if (isDarkOld !== null) {
-        localStorage.theme = isDarkNew ? "dark" : "light";
+    darkMode(isDarkNow, wasDarkBefore) {
+      if (wasDarkBefore !== null) {
+        localStorage.theme = isDarkNow ? "dark" : "light";
       }
-      if (isDarkNew) {
+      if (isDarkNow) {
         document.querySelector("html").classList.add("dark");
       } else {
         document.querySelector("html").classList.remove("dark");
