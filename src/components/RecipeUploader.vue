@@ -1,6 +1,6 @@
 <template>
   <form
-    class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+    class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white dark:bg-black shadow-md rounded px-8 pt-6 pb-8 mb-4"
   >
     <div class="mb-4 col-start-1 md:col-end-3">
       <o-field label="Title" label-for="name" :variant="errors.title ? 'danger' : ''" :message="errors.title">

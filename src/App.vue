@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="container mx-auto px-8 sm:px-12">
-    <div class="header">
+    <div class="header dark:text-white">
       <div>TailwindCSS 2 + Oruga Demo</div>
       <div>
         <dark-mode-switch />

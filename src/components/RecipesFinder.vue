@@ -1,6 +1,6 @@
 <template>
   <div class="divide-y divide-gray-100">
-    <div>
+    <div class="dark:text-white">
       <o-radio v-model="filter" name="all" native-value="all">
         All
       </o-radio>
@@ -30,7 +30,7 @@
             <h2 class="text-lg font-semibold text-black mb-0.5">
               {{ recipe.title }}
             </h2>
-            <dl class="flex flex-wrap text-sm font-medium whitespace-pre">
+            <dl class="flex flex-wrap text-sm font-medium whitespace-pre dark:text-white">
               <div>
                 <dt class="sr-only">Time</dt>
                 <dd>
@@ -49,7 +49,7 @@
               </div>
               <div class="flex-none w-full mt-0.5 font-normal">
                 <dt class="inline mr-1">By</dt>
-                <dd class="inline text-black">{{ recipe.author }}</dd>
+                <dd class="inline text-black dark:text-white">{{ recipe.author }}</dd>
               </div>
               <div
                 class="absolute top-0 right-0 rounded-full bg-amber-50 text-amber-900 px-2 py-0.5 hidden sm:flex lg:hidden xl:flex items-center space-x-1"
@@ -62,7 +62,7 @@
           </div>
         </article>
         <div class="card-content">
-          <div class="content">
+          <div class="content dark:text-white">
             {{ recipe.procedure }}
           </div>
         </div>
@@ -82,10 +82,8 @@ export default Vue.extend({
           return this.$store.state.recipes.filter((recipe) => {
             return recipe.isFeatured;
           });
-          break;
         case "faster":
           return [...this.$store.state.recipes].sort((a, b) => a.time - b.time);
-          break;
         default:
           return this.$store.state.recipes;
       }
