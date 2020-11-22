@@ -62,7 +62,7 @@ const store = new Vuex.Store({
     ],
   },
   mutations: {
-    addRecipe (state, recipe) {
+    addRecipe(state, recipe) {
       state.recipes.push(recipe)
     }
   }
@@ -80,25 +80,29 @@ Vue.use(Oruga, {
     disabledClass: 'btn-disabled'
   },
   field: {
-      override: true,
-      labelClass: 'field-label',
-      messageClass: 'text-xs italic',
-      variantClass: 'field-'
+    override: true,
+    labelClass: 'field-label',
+    messageClass: 'text-xs italic',
+    variantClass: 'field-'
   },
   input: {
-      override: true,
-      inputClass: 'input focus:outline-none focus:shadow-outline',
-      roundedClass: 'rounded',
-      variantClass: 'input-'
+    override: true,
+    inputClass: 'input focus:outline-none focus:shadow-outline',
+    roundedClass: 'rounded',
+    variantClass: 'input-'
   },
   dropdown: {
-      override: true,
-      rootClass: 'dropdown',
-      menuClass: 'dropdown-menu',
-      itemClass: 'dropdown-item'
+    override: true,
+    rootClass: 'dropdown',
+    menuClass: 'dropdown-menu',
+    itemClass: 'dropdown-item'
+  },
+  loading: {
+    backgroundClass: 'loading-background'
   },
   icon: {
-      override: true
+    override: true,
+    spinClass: 'fa-spin'
   },
   switch: {
     override: true,

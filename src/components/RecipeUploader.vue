@@ -79,15 +79,16 @@
         />
       </o-field>
     </div>
-    <!-- <div class="mb-6">
-                <o-field label="Password" label-for="password" variant="danger" message="Please choose a password">
-                    <o-input id="password" type="password" placeholder="Password" />
-                </o-field>
-            </div> -->
     <div class="flex justify-center col-start-1 md:col-end-3">
       <o-button label="Add recipe" @click="addRecipe" native-type="button" />
     </div>
+    <p style="position: relative">
+      <o-loading full-page :active.sync="isLoading">
+        <o-icon icon="sync-alt" size="large" spin> </o-icon>
+      </o-loading>
+    </p>
   </form>
+
 </template>
 <script>
 import Vue from "vue";
@@ -97,6 +98,7 @@ export default Vue.extend({
   data() {
     return {
       file: null,
+      isLoading: false,
       recipe: {
         title: null,
         author: null,
@@ -132,19 +134,24 @@ export default Vue.extend({
       return isValid;
     },
     addRecipe() {
-      if (this._validateRecipe()) {
-        this.$store.commit('addRecipe', this.recipe)
-        this.recipe = {
-          title: "",
-          author: "",
-          time: 0,
-          image: null,
-          servings: 1,
-          difficulty: "easy",
-          procedure: "",
-        }
-      } else {
+      this.isLoading = true;
 
+      if (this._validateRecipe()) {
+        setTimeout(() => {
+          this.$store.commit('addRecipe', this.recipe);
+          this.recipe = {
+            title: "",
+            author: "",
+            time: 0,
+            image: null,
+            servings: 1,
+            difficulty: "easy",
+            procedure: "",
+          }
+          this.isLoading = false;
+        }, 2000);
+      } else {
+        this.isLoading = false;
       }
     },
   },
