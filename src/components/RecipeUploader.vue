@@ -3,21 +3,21 @@
     class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
   >
     <div class="mb-4 col-start-1 md:col-end-3">
-      <o-field label="Name" label-for="name">
+      <o-field label="Title" label-for="name" :variant="errors.title ? 'danger' : ''" :message="errors.title">
         <o-input
-          id="name"
+          id="title"
           type="text"
-          placeholder="Name"
+          placeholder="Name of your recipe (e.g. Pizza)"
           v-model="recipe.title"
         />
       </o-field>
     </div>
     <div class="mb-4 col-start-1 md:col-end-3">
-      <o-field label="Author" label-for="author">
+      <o-field label="Author" label-for="author" :variant="errors.author ? 'danger' : ''" :message="errors.author">
         <o-input
           id="author"
           type="text"
-          placeholder="Author"
+          placeholder="Author name (e.g. Nick Cave)"
           v-model="recipe.author"
         />
       </o-field>
@@ -43,7 +43,7 @@
       </o-field>
     </div>
     <div class="mb-4 col-start-1 flex justify-between">
-      <o-field label="Image" label-for="image">
+      <o-field label="Image" label-for="image" :variant="errors.image ? 'danger' : ''" :message="errors.image">
         <o-upload v-model="file">
           <o-button tag="a" variant="primary">
             <o-icon icon="upload"></o-icon>
@@ -70,11 +70,11 @@
       </o-field>
     </div>
     <div class="mb-4 col-start-1 md:col-end-3">
-      <o-field label="Procedure" label-for="procedure">
+      <o-field label="Procedure" label-for="procedure" :variant="errors.procedure ? 'danger' : ''" :message="errors.procedure">
         <o-input
           id="procedure"
           type="textarea"
-          placeholder="Procedure"
+          placeholder="How to make your recipe step by step"
           v-model="recipe.procedure"
         />
       </o-field>
@@ -98,14 +98,20 @@ export default Vue.extend({
     return {
       file: null,
       recipe: {
-        title: "",
-        author: "",
+        title: null,
+        author: null,
         time: 0,
         image: null,
         servings: 1,
         difficulty: "easy",
         procedure: "",
       },
+      errors: {
+        title: null,
+        author: null,
+        image: null,
+        procedure: null,
+      }
     };
   },
   watch: {
@@ -114,16 +120,31 @@ export default Vue.extend({
     },
   },
   methods: {
+    _validateRecipe () {
+      let isValid = true;
+      for (let key in this.errors) {
+        this.errors[key] = null;
+        if (!this.recipe[key]) {
+          this.errors[key] = 'This field cannot be empty'
+          isValid = false;
+        }
+      }
+      return isValid;
+    },
     addRecipe() {
-      this.$store.commit('addRecipe', this.recipe)
-      this.recipe = {
-        title: "",
-        author: "",
-        time: 0,
-        image: null,
-        servings: 1,
-        difficulty: "easy",
-        procedure: "",
+      if (this._validateRecipe()) {
+        this.$store.commit('addRecipe', this.recipe)
+        this.recipe = {
+          title: "",
+          author: "",
+          time: 0,
+          image: null,
+          servings: 1,
+          difficulty: "easy",
+          procedure: "",
+        }
+      } else {
+
       }
     },
   },

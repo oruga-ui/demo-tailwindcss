@@ -48,7 +48,7 @@
                 <dd>· {{ recipe.servings }} servings</dd>
               </div>
               <div class="flex-none w-full mt-0.5 font-normal">
-                <dt class="inline">By</dt>
+                <dt class="inline mr-1">By</dt>
                 <dd class="inline text-black">{{ recipe.author }}</dd>
               </div>
               <div
