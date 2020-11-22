@@ -117,14 +117,14 @@ export default Vue.extend({
     };
   },
   watch: {
-    file (newFile, oldFile) {
+    file (newFile) {
       this.recipe.image = window.URL.createObjectURL(newFile)
     },
   },
   methods: {
     _validateRecipe () {
       let isValid = true;
-      for (let key in this.errors) {
+      for (const key in this.errors) {
         this.errors[key] = null;
         if (!this.recipe[key]) {
           this.errors[key] = 'This field cannot be empty'
