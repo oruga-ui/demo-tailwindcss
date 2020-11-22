@@ -105,7 +105,6 @@ Vue.use(Oruga, {
     spinClass: 'fa-spin'
   },
   switch: {
-    override: true,
     checkClass: 'switch',
   },
 })
