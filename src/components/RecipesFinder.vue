@@ -1,19 +1,17 @@
 <template>
   <div class="divide-y divide-gray-100">
-    <div class="dark:text-white">
-      <o-radio v-model="filter" name="all" native-value="all">
+    <div class="flex space-x-2 py-3">
+      <o-radio v-model="filter" class="btn_recipe_filter" :class="{ 'btn_recipe_filter--checked' : filter==='all' }" name="all" native-value="all">
         All
       </o-radio>
-      <o-radio v-model="filter" name="featured" native-value="featured">
+      <o-radio v-model="filter" class="btn_recipe_filter" :class="{ 'btn_recipe_filter--checked' : filter==='featured' }" name="featured" native-value="featured">
         Featured
       </o-radio>
-      <o-radio v-model="filter" name="faster" native-value="faster">
+      <o-radio v-model="filter" class="btn_recipe_filter" :class="{ 'btn_recipe_filter--checked' : filter==='faster' }" name="faster" native-value="faster">
         Faster
       </o-radio>
     </div>
-    <div>
       <o-collapse
-        class="card"
         animation="slide"
         v-for="(recipe, index) of filteredRecipes"
         :key="index"
@@ -24,13 +22,13 @@
           <img
             :src="recipe.image"
             alt=""
-            class="flex-none w-18 h-18 rounded-lg object-cover"
+            class="flex-none w-20 h-20 rounded-lg object-cover"
           />
           <div class="min-w-0 relative flex-auto sm:pr-20 lg:pr-0 xl:pr-20">
             <h2 class="text-lg font-semibold text-black mb-0.5">
               {{ recipe.title }}
             </h2>
-            <dl class="flex flex-wrap text-sm font-medium whitespace-pre dark:text-white">
+            <dl class="flex flex-wrap text-sm font-medium whitespace-pre">
               <div>
                 <dt class="sr-only">Time</dt>
                 <dd>
@@ -41,7 +39,7 @@
               </div>
               <div>
                 <dt class="sr-only">Difficulty</dt>
-                <dd>· {{ recipe.difficulty }}</dd>
+                <dd>· {{ recipe.difficulty | difficulty }}</dd>
               </div>
               <div>
                 <dt class="sr-only">Servings</dt>
@@ -49,10 +47,10 @@
               </div>
               <div class="flex-none w-full mt-0.5 font-normal">
                 <dt class="inline mr-1">By</dt>
-                <dd class="inline text-black dark:text-white">{{ recipe.author }}</dd>
+                <dd class="inline">{{ recipe.author }}</dd>
               </div>
               <div
-                class="absolute top-0 right-0 rounded-full bg-amber-50 text-amber-900 px-2 py-0.5 hidden sm:flex lg:hidden xl:flex items-center space-x-1"
+                class="absolute top-0 right-0 rounded-full px-2 py-0.5 hidden sm:flex lg:hidden xl:flex items-center space-x-1"
               >
                 <dt class="text-amber-500">
                   <o-icon :icon="props.open ? 'caret-down' : 'caret-up'" size="large"/>
@@ -61,13 +59,12 @@
             </dl>
           </div>
         </article>
-        <div class="card-content">
-          <div class="content dark:text-white">
+        <div class="">
+          <div class="p-4">
             {{ recipe.procedure }}
           </div>
         </div>
       </o-collapse>
-    </div>
   </div>
 </template>
 <script>
@@ -97,3 +94,12 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style>
+.btn_recipe_filter {
+}
+
+.btn_recipe_filter--checked {
+  @apply text-highlight bg-highlight-background dark:text-highlight-dark dark:bg-highlight-background-dark;
+}
+</style>

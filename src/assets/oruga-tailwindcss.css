@@ -1,6 +1,10 @@
+/* Custom classes */
+
+
+
 /* Button */
 .btn {
-  @apply font-bold py-2 px-4 bg-gray-900 text-white rounded;
+  @apply font-bold py-2 px-4 text-highlight bg-highlight-background dark:text-highlight-dark dark:bg-highlight-background-dark rounded;
 }
 
 .btn-rounded {
@@ -30,10 +34,10 @@
 }
 
 .input-danger {
-  @apply border-red-500;
+  @apply border-highlight;
 }
 
-/* Dropdown */
+/* Switch */
 .switch {
   @apply bg-black;
 }
@@ -42,6 +46,34 @@
   @apply bg-black dark:bg-purple-700;
 }
 
+/* Dropdown */
+
+.dropdown {
+  @apply inline-flex relative;
+}
+
+.dropdown-menu {
+  top: 100%;
+  min-width: 12em;
+  @apply absolute bg-white left-0 m-0 px-2 shadow-lg rounded-sm z-10;
+}
+
+.dropdown-item {
+  @apply relative block no-underline px-1 py-2 cursor-pointer;
+}
+
+/* Loading */
 .loading-background {
   background: rgba(255,255,255,0.6);
+}
+
+/* Radio */
+
+.radio {
+  @apply font-bold py-2 px-4 rounded;
+  min-width: 5rem;
+}
+
+.radio-label {
+  @apply w-full text-center;
 }

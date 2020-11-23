@@ -1,9 +1,14 @@
 <template>
   <form
-    class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white dark:bg-black shadow-md rounded px-8 pt-6 pb-8 mb-4"
+    class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:shadow-md rounded sm:px-8 sm:pt-6 pb-8 mb-4"
   >
     <div class="mb-4 col-start-1 md:col-end-3">
-      <o-field label="Title" label-for="name" :variant="errors.title ? 'danger' : ''" :message="errors.title">
+      <o-field
+        label="Title"
+        label-for="name"
+        :variant="errors.title ? 'danger' : ''"
+        :message="errors.title"
+      >
         <o-input
           id="title"
           type="text"
@@ -13,7 +18,12 @@
       </o-field>
     </div>
     <div class="mb-4 col-start-1 md:col-end-3">
-      <o-field label="Author" label-for="author" :variant="errors.author ? 'danger' : ''" :message="errors.author">
+      <o-field
+        label="Author"
+        label-for="author"
+        :variant="errors.author ? 'danger' : ''"
+        :message="errors.author"
+      >
         <o-input
           id="author"
           type="text"
@@ -23,7 +33,12 @@
       </o-field>
     </div>
     <div class="mb-4 col-start-1">
-      <o-field label="Time (in minutes)" label-for="time" :variant="errors.time ? 'danger' : ''" :message="errors.time">
+      <o-field
+        label="Time (in minutes)"
+        label-for="time"
+        :variant="errors.time ? 'danger' : ''"
+        :message="errors.time"
+      >
         <o-input
           id="time"
           type="number"
@@ -34,7 +49,12 @@
       </o-field>
     </div>
     <div class="mb-4">
-      <o-field label="Servings" label-for="servings" :variant="errors.servings ? 'danger' : ''" :message="errors.servings">
+      <o-field
+        label="Servings"
+        label-for="servings"
+        :variant="errors.servings ? 'danger' : ''"
+        :message="errors.servings"
+      >
         <o-input
           id="servings"
           type="number"
@@ -45,10 +65,15 @@
       </o-field>
     </div>
     <div class="mb-4 col-start-1 flex justify-between">
-      <o-field label="Image" label-for="image" :variant="errors.image ? 'danger' : ''" :message="errors.image">
+      <o-field
+        label="Image"
+        label-for="image"
+        :variant="errors.image ? 'danger' : ''"
+        :message="errors.image"
+      >
         <o-upload v-model="file">
           <o-button tag="a" variant="primary">
-            <o-icon icon="upload"></o-icon>
+            <o-icon icon="upload" class="mr-4"></o-icon>
             <span>Click to upload</span>
           </o-button>
         </o-upload>
@@ -57,22 +82,48 @@
         :src="recipe.image"
         v-if="recipe.image"
         alt=""
-        class="flex-none w-18 h-18 rounded-lg object-cover"
+        class="flex-none w-20 h-20 rounded-lg object-cover"
       />
     </div>
     <div class="mb-4">
       <o-field label="Difficulty" class="">
         <div class="flex justify-center align-center items-center">
-          <o-select placeholder="Difficulty" v-model="recipe.difficulty">
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-          </o-select>
+          <o-dropdown
+            placeholder="Difficulty"
+            v-model="recipe.difficulty"
+            aria-role="list"
+          >
+            <o-button
+              variant="primary"
+              type="button"
+              slot="trigger"
+              class="w-32"
+            >
+              <div class="flex justify-between">
+                <span>{{ recipe.difficulty | difficulty }}</span>
+                <o-icon icon="caret-down"></o-icon>
+              </div>
+            </o-button>
+            <o-dropdown-item value="easy">
+              <span>Easy</span>
+            </o-dropdown-item>
+            <o-dropdown-item value="medium">
+              <span>Medium</span>
+            </o-dropdown-item>
+            <o-dropdown-item value="hard">
+              <span>Hard</span>
+            </o-dropdown-item>
+          </o-dropdown>
         </div>
       </o-field>
     </div>
     <div class="mb-4 col-start-1 md:col-end-3">
-      <o-field label="Procedure" label-for="procedure" :variant="errors.procedure ? 'danger' : ''" :message="errors.procedure">
+      <o-field
+        label="Procedure"
+        label-for="procedure"
+        :variant="errors.procedure ? 'danger' : ''"
+        :message="errors.procedure"
+      >
         <o-input
           inputClass="h-48"
           id="procedure"
@@ -91,7 +142,6 @@
       </o-loading>
     </p>
   </form>
-
 </template>
 <script>
 import Vue from "vue";
@@ -117,28 +167,26 @@ export default Vue.extend({
         image: null,
         procedure: null,
         time: null,
-        servings: null
-      }
+        servings: null,
+      },
     };
   },
   watch: {
-    file (newFile) {
-      this.recipe.image = window.URL.createObjectURL(newFile)
+    file(newFile) {
+      this.recipe.image = window.URL.createObjectURL(newFile);
     },
   },
   methods: {
-    _validateRecipe () {
+    _validateRecipe() {
       let isValid = true;
       for (const key in this.errors) {
         this.errors[key] = null;
         if (!this.recipe[key]) {
-          this.errors[key] = 'This field cannot be empty';
+          this.errors[key] = "This field cannot be empty";
           isValid = false;
         }
-        console.log(this.recipe[key])
-        if ((key === 'servings' || key === 'time') && this.recipe[key] < 1) {
-          console.log('entra')
-          this.errors[key] = 'This field should be at least 1';
+        if ((key === "servings" || key === "time") && this.recipe[key] < 1) {
+          this.errors[key] = "This field should be at least 1";
           isValid = false;
         }
       }
@@ -149,7 +197,7 @@ export default Vue.extend({
 
       if (this._validateRecipe()) {
         setTimeout(() => {
-          this.$store.commit('addRecipe', this.recipe);
+          this.$store.commit("addRecipe", this.recipe);
           this.recipe = {
             title: "",
             author: "",
@@ -158,7 +206,7 @@ export default Vue.extend({
             servings: 1,
             difficulty: "easy",
             procedure: "",
-          }
+          };
           this.isLoading = false;
         }, 2000);
       } else {

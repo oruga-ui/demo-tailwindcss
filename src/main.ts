@@ -13,6 +13,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 import DarkModeSwitch from "./components/DarkModeSwitch.vue";
+import MainHeader from "./components/MainHeader.vue";
 
 import '@oruga-ui/oruga/dist/oruga-lite.css'
 import './assets/tailwindcss.css';
@@ -24,6 +25,16 @@ library.add(fas);
 library.add(fab);
 
 Vue.component('vue-fontawesome', FontAwesomeIcon);
+Vue.component('main-header', MainHeader);
+
+Vue.filter('difficulty', (difficulty: string) => {
+  let difficulties: any = {
+    'easy' : 'Easy',
+    'medium' : 'Medium',
+    'hard' : 'Hard'
+  };
+  return difficulties[difficulty];
+})
 
 Vue.use(Vuex)
 
@@ -34,9 +45,9 @@ const store = new Vuex.Store({
         title: "Hank’s Juiciest Beef Burger",
         author: "Hank Douglas",
         time: 20,
-        difficulty: "Easy",
+        difficulty: "medium",
         servings: 4,
-        procedure: "My recipe for Hank’s Juiciest Beef Burger",
+        procedure: "My recipe for Hank’s Juiciest Beef Burger, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         image: "https://tailwindcss.com/_next/static/media/jucy-beef-burger.032c3c262707ccb9636fb3c909efeaf6.jpg",
         isFeatured: true
       },
@@ -44,9 +55,9 @@ const store = new Vuex.Store({
         title: "Southern Fried Chicken Sandwich",
         author: "Nicholas Denver",
         time: 30,
-        difficulty: "Easy",
+        difficulty: "easy",
         servings: 5,
-        procedure: "Southern Fried Chicken Sandwich",
+        procedure: "Southern Fried Chicken Sandwich, at vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
         image: "https://tailwindcss.com/_next/static/media/chicken-sandwich.cdedaf24984d883d5ed1fd3de8f49ec3.jpg",
         isFeatured: true
       },
@@ -54,9 +65,9 @@ const store = new Vuex.Store({
         title: "Lily’s Healthy Beef Burger",
         author: "Lily Ford",
         time: 10,
-        difficulty: "Easy",
+        difficulty: "easy",
         servings: 4,
-        procedure: "Lily’s Healthy Beef Burger recipe",
+        procedure: "Lily’s Healthy Beef Burger recipe, sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
         image: "https://tailwindcss.com/_next/static/media/healthy-beef-burger.e735f49f7da4c92099f8811abf828ea8.jpg"
       }
     ],
@@ -78,6 +89,10 @@ Vue.use(Oruga, {
     roundedClass: 'btn-rounded',
     outlinedClass: 'btn-outlined',
     disabledClass: 'btn-disabled'
+  },
+  radio: {
+    rootClass: 'radio',
+    labelClass: 'radio-label'
   },
   field: {
     override: true,

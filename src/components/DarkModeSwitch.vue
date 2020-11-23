@@ -1,8 +1,8 @@
 <template>
   <div class="text-gray-400 flex items-center">
-    <o-icon icon="sun" size="medium" :class="{'text-yellow-400' : !darkMode}"></o-icon>
+    <o-icon icon="sun" size="medium" :class="{'text-highlight-background' : !darkMode}"></o-icon>
     <o-switch size="small mx-1" v-model="darkMode"></o-switch>
-    <o-icon icon="moon" size="medium" :class="{'text-blue-400' : darkMode}"></o-icon>
+    <o-icon icon="moon" size="medium" :class="{'text-highlight-background-dark' : darkMode}"></o-icon>
   </div>
 </template>
 <script>
