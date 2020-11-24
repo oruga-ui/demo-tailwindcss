@@ -18,7 +18,7 @@
       <dark-mode-switch />
       <a
         target="blank"
-        class="transition duration-500 opacity-40 hover:opacity-100"
+        class="transition duration-500 opacity-40 hover:opacity-100 text-main dark:text-main-dark"
         href="https://github.com/oruga-ui/demo-tailwindcss"
       >
         <o-icon class="ml-4" pack="fab" icon="github" size="large"></o-icon>

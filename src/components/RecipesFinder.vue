@@ -1,5 +1,5 @@
 <template>
-  <div class="divide-y divide-gray-100">
+  <div class="divide-y divide-gray-100 border-b border-gray-100">
     <div class="flex space-x-2 py-3">
       <o-radio v-model="filter" class="btn_recipe_filter" :class="{ 'btn_recipe_filter--checked' : filter==='all' }" name="all" native-value="all">
         All
@@ -19,11 +19,7 @@
         @open="isOpen = index"
       >
         <article slot="trigger" slot-scope="props" class="card-header p-4 flex space-x-4 text-main dark:text-main-dark">
-          <img
-            :src="recipe.image"
-            alt=""
-            class="flex-none w-20 h-20 rounded-lg object-cover"
-          />
+          <recipe-image :src="recipe.image" />
           <div class="min-w-0 relative flex-auto sm:pr-20 lg:pr-0 xl:pr-20">
             <h2 class="text-lg font-semibold mb-0.5">
               {{ recipe.title }}
@@ -32,9 +28,7 @@
               <div>
                 <dt class="sr-only">Time</dt>
                 <dd>
-                  <abbr :title="`${recipe.time} minutes`"
-                    >{{ recipe.time }}m</abbr
-                  >
+                  <abbr :title="`${recipe.time} minutes`">{{ recipe.time }}m</abbr>
                 </dd>
               </div>
               <div>
@@ -69,9 +63,13 @@
 </template>
 <script>
 import Vue from "vue";
+import RecipeImage from '@/components/RecipeImage.vue'
 
 export default Vue.extend({
   name: "RecipesFinder",
+  components: {
+    'recipe-image' : RecipeImage
+  },
   computed: {
     filteredRecipes() {
       switch (this.filter) {
