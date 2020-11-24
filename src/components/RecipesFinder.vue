@@ -61,9 +61,10 @@
       </o-collapse>
   </div>
 </template>
-<script>
+<script lang="ts">
 import Vue from "vue";
-import RecipeImage from '@/components/RecipeImage.vue'
+import RecipeImage from '@/components/RecipeImage.vue';
+import Recipe from '@/recipe';
 
 export default Vue.extend({
   name: "RecipesFinder",
@@ -74,7 +75,7 @@ export default Vue.extend({
     filteredRecipes() {
       switch (this.filter) {
         case "featured":
-          return this.$store.state.recipes.filter((recipe) => {
+          return this.$store.state.recipes.filter((recipe: Recipe) => {
             return recipe.isFeatured;
           });
         case "faster":

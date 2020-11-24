@@ -5,14 +5,18 @@
     class="flex-none w-20 h-20 rounded-lg object-cover"
   />
 </template>
-<script>
+<script lang="ts">
 import Vue from "vue";
 
 export default Vue.extend({
   name: "RecipeImage",
   props: {
-    src: '',
-    alt: ''
+    src: {
+      type: String,
+    },
+    alt: {
+      type: String
+    }
   }
 })
 </script>

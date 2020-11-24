@@ -138,7 +138,7 @@
     </p>
   </form>
 </template>
-<script>
+<script lang="ts">
 import Vue from "vue";
 import RecipeImage from '@/components/RecipeImage.vue'
 
@@ -159,7 +159,7 @@ export default Vue.extend({
         servings: 1,
         difficulty: "easy",
         procedure: "",
-      },
+      } as any,
       errors: {
         title: null,
         author: null,
@@ -167,7 +167,7 @@ export default Vue.extend({
         procedure: null,
         time: null,
         servings: null,
-      },
+      } as any,
     };
   },
   watch: {

@@ -5,14 +5,14 @@
     <o-icon icon="moon" size="medium" :class="{'text-highlight-background-dark' : darkMode}"></o-icon>
   </div>
 </template>
-<script>
+<script lang="ts">
 import Vue from "vue";
 
 export default Vue.extend({
   name: "DarkModeSwitch",
   data() {
     return {
-      darkMode: null,
+      darkMode: null as any,
     };
   },
   mounted() {
@@ -28,10 +28,11 @@ export default Vue.extend({
       if (wasDarkBefore !== null) {
         localStorage.theme = isDarkNow ? "dark" : "light";
       }
+      let html = document.querySelector("html")!;
       if (isDarkNow) {
-        document.querySelector("html").classList.add("dark");
+        html.classList.add("dark");
       } else {
-        document.querySelector("html").classList.remove("dark");
+        html.classList.remove("dark");
       }
     },
   },

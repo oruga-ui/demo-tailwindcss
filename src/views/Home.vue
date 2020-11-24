@@ -11,10 +11,10 @@
     <recipes-uploader />
   </section>
 </template>
-<script>
+<script lang="ts">
 import Vue from "vue";
-import RecipeUploader from "@/components/RecipeUploader";
-import RecipesFinder from "@/components/RecipesFinder";
+import RecipeUploader from "@/components/RecipeUploader.vue";
+import RecipesFinder from "@/components/RecipesFinder.vue";
 
 export default Vue.extend({
   components: {

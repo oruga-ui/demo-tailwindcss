@@ -59,7 +59,7 @@
 }
 
 .dropdown-item {
-  @apply relative block no-underline px-1 py-2 cursor-pointer;
+  @apply relative block no-underline px-1 py-2 cursor-pointer text-main dark:text-main-dark dark:bg-black;
 }
 
 /* Loading */
