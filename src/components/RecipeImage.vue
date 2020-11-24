@@ -1,7 +1,7 @@
 <template>
   <img
     :src="src"
-    alt=""
+    :alt="alt"
     class="flex-none w-20 h-20 rounded-lg object-cover"
   />
 </template>
@@ -11,7 +11,8 @@ import Vue from "vue";
 export default Vue.extend({
   name: "RecipeImage",
   props: {
-    src: ''
+    src: '',
+    alt: ''
   }
 })
 </script>

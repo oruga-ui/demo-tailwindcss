@@ -19,7 +19,7 @@
         @open="isOpen = index"
       >
         <article slot="trigger" slot-scope="props" class="card-header p-4 flex space-x-4 text-main dark:text-main-dark">
-          <recipe-image :src="recipe.image" />
+          <recipe-image :src="recipe.image" :alt="`Image for recipe ${recipe.title}`" />
           <div class="min-w-0 relative flex-auto sm:pr-20 lg:pr-0 xl:pr-20">
             <h2 class="text-lg font-semibold mb-0.5">
               {{ recipe.title }}

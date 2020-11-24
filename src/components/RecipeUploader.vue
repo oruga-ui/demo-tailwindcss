@@ -78,12 +78,7 @@
           </o-button>
         </o-upload>
       </o-field>
-      <img
-        :src="recipe.image"
-        v-if="recipe.image"
-        alt=""
-        class="flex-none w-20 h-20 rounded-lg object-cover"
-      />
+      <recipe-image v-if="recipe.image" :src="recipe.image" />
     </div>
     <div class="mb-4">
       <o-field label="Difficulty" class="">
@@ -145,9 +140,13 @@
 </template>
 <script>
 import Vue from "vue";
+import RecipeImage from '@/components/RecipeImage.vue'
 
 export default Vue.extend({
   name: "RecipeUploader",
+  components: {
+    'recipe-image' : RecipeImage
+  },
   data() {
     return {
       file: null,
