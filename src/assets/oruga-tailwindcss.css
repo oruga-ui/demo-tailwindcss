@@ -21,7 +21,7 @@
 
 /* Field */
 .field-label {
-  @apply block text-gray-700 text-sm font-bold mb-2 dark:text-white;
+  @apply block text-sm font-bold mb-2 text-main dark:text-main-dark;
 }
 
 .field-danger {
@@ -30,7 +30,7 @@
 
 /* Input */
 .input {
-  @apply shadow appearance-none border w-full py-2 px-3 text-gray-700 leading-tight dark:bg-black dark:text-white;
+  @apply shadow appearance-none border w-full py-2 px-3 leading-tight text-main dark:text-main-dark dark:bg-black;
 }
 
 .input-danger {
@@ -43,7 +43,7 @@
 }
 
 .o-switch input[type=checkbox]:checked + .o-switch-check {
-  @apply bg-black dark:bg-purple-700;
+  @apply bg-black dark:bg-highlight-dark;
 }
 
 /* Dropdown */
@@ -64,7 +64,7 @@
 
 /* Loading */
 .loading-background {
-  background: rgba(255,255,255,0.6);
+  @apply bg-gray-50 dark:bg-gray-700 opacity-75;
 }
 
 /* Radio */

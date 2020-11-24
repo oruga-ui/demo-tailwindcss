@@ -1,6 +1,6 @@
 <template>
   <form
-    class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:shadow-md rounded sm:px-8 sm:pt-6 pb-8 mb-4"
+    class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:shadow-md rounded sm:px-8 sm:pt-6 pb-8 mb-4 text-main"
   >
     <div class="mb-4 col-start-1 md:col-end-3">
       <o-field
@@ -138,7 +138,7 @@
     </div>
     <p style="position: relative">
       <o-loading full-page :active.sync="isLoading">
-        <o-icon icon="sync-alt" size="large" spin> </o-icon>
+        <o-icon class="text-main dark:text-main-dark" icon="sync-alt" size="large" spin> </o-icon>
       </o-loading>
     </p>
   </form>
@@ -201,7 +201,7 @@ export default Vue.extend({
           this.recipe = {
             title: "",
             author: "",
-            time: 0,
+            time: 5,
             image: null,
             servings: 1,
             difficulty: "easy",

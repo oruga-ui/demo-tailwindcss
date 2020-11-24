@@ -1,7 +1,7 @@
 <template>
   <section>
     <p
-      class="max-w-screen-lg text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11 dark:text-white"
+      class="max-w-screen-lg text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11 text-main dark:text-main-dark"
     >
       OrugaUI + TailwindCSS 2 demo. A utility-first CSS framework packed with
       classes like flex, pt-4, text-center and rotate-90 that can be composed to
