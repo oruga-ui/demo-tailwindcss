@@ -31,11 +31,7 @@
 
 /* Switch */
 .switch {
-  @apply bg-black;
-}
-
-.o-switch input[type=checkbox]:checked + .o-switch-check {
-  @apply bg-black dark:bg-highlight-dark;
+  @apply bg-black dark:bg-highlight-dark;;
 }
 
 /* Dropdown */

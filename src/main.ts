@@ -1,10 +1,12 @@
+import './oruga-preview/oruga.css'
+
 import Vue from 'vue'
 import Vuex from 'vuex'
 import App from './App.vue'
 import router from './router'
 
 // @ts-ignore
-import Oruga from '@oruga-ui/oruga';
+import Oruga from './oruga-preview/oruga'
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from "@fortawesome/free-solid-svg-icons";
@@ -15,7 +17,6 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import DarkModeSwitch from "./components/DarkModeSwitch.vue";
 import MainHeader from "./components/MainHeader.vue";
 
-import '@oruga-ui/oruga/dist/oruga-lite.css'
 import './assets/tailwindcss.css';
 import './assets/oruga-tailwindcss.css';
 
