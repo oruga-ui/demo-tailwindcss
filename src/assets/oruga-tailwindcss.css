@@ -41,9 +41,8 @@
 }
 
 .dropdown-menu {
-  top: 100%;
   min-width: 12em;
-  @apply absolute left-0 m-0 px-2 shadow-lg rounded-sm z-10 bg-main-dark text-main dark:text-main-dark dark:bg-main;
+  @apply absolute left-0 m-0 px-2 shadow-lg rounded-sm z-10 bg-main-dark text-main dark:text-main-dark dark:bg-main top-full;
 }
 
 .dropdown-item {
@@ -60,9 +59,13 @@
 
 .radio {
   @apply font-bold py-2 px-4 rounded;
-  min-width: 5rem;
+  min-width: 6rem;
+}
+
+.radio-check {
+  @apply hidden;
 }
 
 .radio-label {
-  @apply w-full text-center;
+  @apply w-full text-center p-0;
 }

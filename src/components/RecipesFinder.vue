@@ -47,7 +47,7 @@
                 class="absolute top-0 right-0 rounded-full px-2 py-0.5 hidden sm:flex lg:hidden xl:flex items-center space-x-1"
               >
                 <dt class="">
-                  <o-icon :icon="props.open ? 'caret-down' : 'caret-up'" size="large"/>
+                  <o-icon :icon="props.open ? 'caret-up' : 'caret-down'" size="large"/>
                 </dt>
               </div>
             </dl>

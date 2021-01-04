@@ -93,7 +93,8 @@ Vue.use(Oruga, {
   },
   radio: {
     rootClass: 'radio',
-    labelClass: 'radio-label'
+    labelClass: 'radio-label',
+    checkClass: 'radio-check'
   },
   field: {
     override: true,
@@ -124,6 +125,7 @@ Vue.use(Oruga, {
     checkClass: 'switch',
   },
 })
+
 Vue.component('dark-mode-switch', DarkModeSwitch);
 
 new Vue({
