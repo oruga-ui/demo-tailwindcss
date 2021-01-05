@@ -5,6 +5,7 @@ This simple demo made using the upcoming [Oruga](https://github.com/oruga-ui/oru
 - [Online demo](https://oruga-tailwindcss-demo.netlify.app)
 - [Oruga Documentation preview](https://oruga-documentation-preview.netlify.app)
 
+You can find common style for Oruga UI components in `src/assets/oruga-tailwind.css`
 
 ## Project setup
 ```
