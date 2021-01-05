@@ -1,13 +1,13 @@
 <template>
   <div class="divide-y divide-gray-100 border-b border-gray-100">
     <div class="flex space-x-2 py-3">
-      <o-radio v-model="filter" class="btn_recipe_filter" :class="{ 'btn_recipe_filter--checked' : filter==='all' }" name="all" native-value="all" @click.native="isOpen = -1">
+      <o-radio v-model="filter" :class="{ 'radio-checked' : filter==='all' }" name="all" native-value="all" @click.native="isOpen = -1">
         All
       </o-radio>
-      <o-radio v-model="filter" class="btn_recipe_filter" :class="{ 'btn_recipe_filter--checked' : filter==='featured' }" name="featured" native-value="featured" @click.native="isOpen = -1">
+      <o-radio v-model="filter" :class="{ 'radio-checked' : filter==='featured' }" name="featured" native-value="featured" @click.native="isOpen = -1">
         Featured
       </o-radio>
-      <o-radio v-model="filter" class="btn_recipe_filter" :class="{ 'btn_recipe_filter--checked' : filter==='faster' }" name="faster" native-value="faster" @click.native="isOpen = -1">
+      <o-radio v-model="filter" :class="{ 'radio-checked' : filter==='faster' }" name="faster" native-value="faster" @click.native="isOpen = -1">
         Faster
       </o-radio>
     </div>
@@ -19,7 +19,7 @@
         <div>
           <o-skeleton circle width="64px" height="64px"></o-skeleton>
         </div>
-        <div style="width: 100%">
+        <div class="w-full">
           <o-skeleton width="100%" ></o-skeleton>
           <o-skeleton width="100%" ></o-skeleton>
           <o-skeleton width="100%" ></o-skeleton>
@@ -114,13 +114,3 @@ export default Vue.extend({
   },
 });
 </script>
-
-<style>
-.btn_recipe_filter {
-  @apply text-main dark:text-main-dark;
-}
-
-.btn_recipe_filter--checked {
-  @apply text-highlight bg-highlight-background dark:text-highlight-dark dark:bg-highlight-background-dark;
-}
-</style>
