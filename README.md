@@ -1,4 +1,4 @@
-# Oruga Demo TailwindCSS
+# Oruga TailwindCSS Demo
 
 This simple demo made using the upcoming [Oruga](https://github.com/oruga-ui/oruga) release shows how to customize `Oruga UI` with `TailwindCSS 2` and use components like Input, Radio, Loading, Switch, Collapse and so on!
 
