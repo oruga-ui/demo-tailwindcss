@@ -82,7 +82,7 @@
     </div>
     <div class="mb-4">
       <o-field label="Difficulty" class="">
-        <div class="flex justify-center align-center items-center">
+        <div class="flex">
           <o-dropdown
             placeholder="Difficulty"
             v-model="recipe.difficulty"

@@ -87,9 +87,6 @@ Vue.use(Oruga, {
   button: {
     override: true,
     rootClass: 'btn',
-    roundedClass: 'btn-rounded',
-    outlinedClass: 'btn-outlined',
-    disabledClass: 'btn-disabled'
   },
   radio: {
     rootClass: 'radio',
@@ -109,10 +106,9 @@ Vue.use(Oruga, {
     variantClass: 'input-'
   },
   dropdown: {
-    override: true,
-    rootClass: 'dropdown',
     menuClass: 'dropdown-menu',
-    itemClass: 'dropdown-item'
+    itemClass: 'dropdown-item',
+    itemActiveClass: 'dropdown-item-active'
   },
   loading: {
     backgroundClass: 'loading-background'
@@ -123,6 +119,7 @@ Vue.use(Oruga, {
   },
   switch: {
     checkClass: 'switch',
+    labelClass: 'switch-label',
   },
 })
 

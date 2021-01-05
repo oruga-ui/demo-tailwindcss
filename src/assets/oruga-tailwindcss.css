@@ -1,17 +1,12 @@
-/* Custom classes */
-
-
-
 /* Button */
+
 .btn {
   @apply font-bold py-2 px-4 text-highlight bg-highlight-background dark:text-highlight-dark dark:bg-highlight-background-dark rounded;
 }
 
-.btn-rounded {
-  @apply rounded-full;
-}
 
 /* Field */
+
 .field-label {
   @apply block text-sm font-bold mb-2 text-main dark:text-main-dark;
 }
@@ -20,7 +15,9 @@
   @apply text-red-500;
 }
 
+
 /* Input */
+
 .input {
   @apply shadow appearance-none border w-full py-2 px-3 leading-tight text-main dark:text-main-dark dark:bg-main;
 }
@@ -29,31 +26,38 @@
   @apply border-highlight;
 }
 
+
 /* Switch */
+
 .switch {
-  @apply bg-black dark:bg-highlight-dark;;
+  @apply bg-black dark:bg-highlight-dark;
+}
+
+.switch-label {
+  @apply hidden;
 }
 
 /* Dropdown */
 
-.dropdown {
-  @apply inline-flex relative;
-}
-
 .dropdown-menu {
-  min-width: 12em;
-  @apply absolute left-0 m-0 px-2 shadow-lg rounded-sm z-10 bg-main-dark text-main dark:text-main-dark dark:bg-main top-full;
+  @apply shadow-lg rounded-sm z-10 bg-main-dark text-main dark:text-main-dark dark:bg-main z-50;
 }
 
 .dropdown-item {
-  @apply relative block no-underline px-1 py-2 cursor-pointer text-main dark:text-main-dark dark:bg-main;
-  @apply hover:text-highlight-background dark:hover:text-highlight-background-dark;
+  @apply cursor-pointer text-main dark:text-main-dark dark:bg-main;
 }
 
+.dropdown-item-active {
+  @apply text-highlight bg-highlight-background dark:text-highlight-dark dark:bg-highlight-background-dark;
+}
+
+
 /* Loading */
+
 .loading-background {
   @apply bg-gray-50 dark:bg-gray-700 opacity-75;
 }
+
 
 /* Radio */
 

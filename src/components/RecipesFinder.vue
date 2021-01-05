@@ -15,7 +15,7 @@
         class="p-4 flex space-x-4"
         v-for="(recipe, index) of filteredRecipes"
         :class="{ hidden : !isLoading }"
-        :key="index">
+        :key="`loading-${index}`">
         <div>
           <o-skeleton circle width="64px" height="64px"></o-skeleton>
         </div>
