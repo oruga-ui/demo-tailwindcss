@@ -11,9 +11,24 @@
         Faster
       </o-radio>
     </div>
+      <article
+        class="p-4 flex space-x-4"
+        v-for="(recipe, index) of filteredRecipes"
+        :class="{ hidden : !isLoading }"
+        :key="index">
+        <div>
+          <o-skeleton circle width="64px" height="64px"></o-skeleton>
+        </div>
+        <div style="width: 100%">
+          <o-skeleton width="100%" ></o-skeleton>
+          <o-skeleton width="100%" ></o-skeleton>
+          <o-skeleton width="100%" ></o-skeleton>
+        </div>
+      </article>
       <o-collapse
         animation="slide"
         v-for="(recipe, index) of filteredRecipes"
+        :class="{ hidden : isLoading }"
         :key="index"
         :open="isOpen == index"
         @open="isOpen = index"
@@ -68,6 +83,11 @@ import Recipe from '@/recipe';
 
 export default Vue.extend({
   name: "RecipesFinder",
+  mounted () {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2500);
+  },
   components: {
     'recipe-image' : RecipeImage
   },
@@ -89,6 +109,7 @@ export default Vue.extend({
     return {
       isOpen: -1,
       filter: 'all',
+      isLoading: true
     };
   },
 });
