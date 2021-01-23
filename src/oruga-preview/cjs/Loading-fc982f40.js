@@ -1,7 +1,9 @@
-import { getValueByPath, removeElement } from './helpers.js';
-import { B as BaseComponentMixin, c as config, n as normalizeComponent } from './plugins-3fa0f67b.js';
-import { _ as __vue_component__$1 } from './Icon-60401233.js';
-import { H as HTMLElement } from './ssr-1ee179b4.js';
+'use strict';
+
+var helpers = require('./helpers.js');
+var plugins = require('./plugins-d1c9ea2a.js');
+var Icon = require('./Icon-d8c779b9.js');
+var ssr = require('./ssr-39c7e185.js');
 
 //
 /**
@@ -14,15 +16,15 @@ import { H as HTMLElement } from './ssr-1ee179b4.js';
 var script = {
   name: 'OLoading',
   components: {
-    [__vue_component__$1.name]: __vue_component__$1
+    [Icon.__vue_component__.name]: Icon.__vue_component__
   },
-  mixins: [BaseComponentMixin],
+  mixins: [plugins.BaseComponentMixin],
   configField: 'loading',
   props: {
     /** Whether modal is active or not,  use the .sync modifier (Vue 2.x) or v-model:active (Vue 3.x) to make it two-way binding */
     active: Boolean,
     programmatic: Boolean,
-    container: [Object, Function, HTMLElement],
+    container: [Object, Function, ssr.HTMLElement],
 
     /** Loader will overlay the full page */
     fullPage: {
@@ -34,7 +36,7 @@ var script = {
     animation: {
       type: String,
       default: () => {
-        return getValueByPath(config, 'loading.animation', 'fade');
+        return helpers.getValueByPath(plugins.config, 'loading.animation', 'fade');
       }
     },
 
@@ -54,7 +56,7 @@ var script = {
     icon: {
       type: String,
       default: () => {
-        return getValueByPath(config, 'loading.icon', 'spin');
+        return helpers.getValueByPath(plugins.config, 'loading.icon', 'sync-alt');
       }
     },
 
@@ -67,10 +69,10 @@ var script = {
       type: String,
       default: 'medium'
     },
-    rootClass: String,
-    backgroundClass: String,
-    iconClass: String,
-    fullPageIconClass: String
+    rootClass: [String, Function, Array],
+    overlayClass: [String, Function, Array],
+    iconClass: [String, Function, Array],
+    fullPageIconClass: [String, Function, Array]
   },
 
   data() {
@@ -97,8 +99,8 @@ var script = {
       }];
     },
 
-    backgroundClasses() {
-      return [this.computedClass('backgroundClass', 'o-load__background')];
+    overlayClasses() {
+      return [this.computedClass('overlayClass', 'o-load__overlay')];
     },
 
     iconClasses() {
@@ -129,7 +131,7 @@ var script = {
         this.isActive = false;
         setTimeout(() => {
           this.$destroy();
-          removeElement(this.$el);
+          helpers.removeElement(this.$el);
         }, 150);
       }
     },
@@ -181,7 +183,7 @@ var script = {
 const __vue_script__ = script;
 
 /* template */
-var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":_vm.animation}},[(_vm.isActive)?_c('div',{class:_vm.rootClasses},[_c('div',{class:_vm.backgroundClasses,on:{"click":_vm.cancel}}),_vm._t("default",[_c('o-icon',{class:_vm.iconClasses,attrs:{"icon":_vm.icon,"spin":_vm.iconSpin,"size":_vm.iconSize}})])],2):_vm._e()])};
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":_vm.animation}},[(_vm.isActive)?_c('div',{class:_vm.rootClasses},[_c('div',{class:_vm.overlayClasses,on:{"click":_vm.cancel}}),_vm._t("default",[_c('o-icon',{class:_vm.iconClasses,attrs:{"icon":_vm.icon,"spin":_vm.iconSpin,"size":_vm.iconSize}})])],2):_vm._e()])};
 var __vue_staticRenderFns__ = [];
 
   /* style */
@@ -200,7 +202,7 @@ var __vue_staticRenderFns__ = [];
   
 
   
-  const __vue_component__ = /*#__PURE__*/normalizeComponent(
+  const __vue_component__ = /*#__PURE__*/plugins.normalizeComponent(
     { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
     __vue_inject_styles__,
     __vue_script__,
@@ -213,4 +215,4 @@ var __vue_staticRenderFns__ = [];
     undefined
   );
 
-export { __vue_component__ as _ };
+exports.__vue_component__ = __vue_component__;

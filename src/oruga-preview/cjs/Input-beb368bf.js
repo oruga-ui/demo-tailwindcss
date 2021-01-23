@@ -1,9 +1,9 @@
 'use strict';
 
 var helpers = require('./helpers.js');
-var plugins = require('./plugins-3f7829d9.js');
-var Icon = require('./Icon-5b4af0b7.js');
-var FormElementMixin = require('./FormElementMixin-2354d5ae.js');
+var plugins = require('./plugins-d1c9ea2a.js');
+var Icon = require('./Icon-d8c779b9.js');
+var FormElementMixin = require('./FormElementMixin-f42a30ee.js');
 
 //
 /**
@@ -78,18 +78,18 @@ var script = {
     iconRightClickable: Boolean,
 
     /** Variant of right icon */
-    iconRightType: String,
-    rootClass: String,
-    controlExpandedClass: String,
-    iconsLeftClass: String,
-    iconsRightClass: String,
-    inputClass: String,
-    roundedClass: String,
-    iconLeftClass: String,
-    iconRightClass: String,
-    counterClass: String,
-    sizeClass: String,
-    variantClass: String
+    iconRightType: [String, Function, Array],
+    rootClass: [String, Function, Array],
+    expandedClass: [String, Function, Array],
+    iconLeftSpaceClass: [String, Function, Array],
+    iconRightSpaceClass: [String, Function, Array],
+    inputClass: [String, Function, Array],
+    roundedClass: [String, Function, Array],
+    iconLeftClass: [String, Function, Array],
+    iconRightClass: [String, Function, Array],
+    counterClass: [String, Function, Array],
+    sizeClass: [String, Function, Array],
+    variantClass: [String, Function, Array]
   },
 
   data() {
@@ -104,7 +104,7 @@ var script = {
   computed: {
     rootClasses() {
       return [this.computedClass('rootClass', 'o-ctrl-input'), {
-        [this.computedClass('controlExpandedClass', 'o-ctrl-input--expanded')]: this.expanded
+        [this.computedClass('expandedClass', 'o-ctrl-input--expanded')]: this.expanded
       }];
     },
 
@@ -118,9 +118,9 @@ var script = {
       }, {
         [this.computedClass('textareaClass', 'o-input__textarea')]: this.type === 'textarea'
       }, {
-        [this.computedClass('iconsLeftClass', 'o-input-icons-left')]: this.icon
+        [this.computedClass('iconLeftSpaceClass', 'o-input-iconspace-left')]: this.icon
       }, {
-        [this.computedClass('iconsRightClass', 'o-input-icons-right')]: this.hasIconRight
+        [this.computedClass('iconRightSpaceClass', 'o-input-iconspace-right')]: this.hasIconRight
       }];
     },
 

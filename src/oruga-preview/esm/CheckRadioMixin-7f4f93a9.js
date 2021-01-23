@@ -34,7 +34,8 @@ var CheckRadioMixin = {
 
   data() {
     return {
-      newValue: this.value
+      newValue: this.value,
+      isIndeterminate: this.indeterminate
     };
   },
 
@@ -46,6 +47,7 @@ var CheckRadioMixin = {
 
       set(value) {
         this.newValue = value;
+        this.isIndeterminate = false;
         this.$emit('input', this.newValue);
       }
 

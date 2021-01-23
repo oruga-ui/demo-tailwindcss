@@ -1,8 +1,9 @@
 'use strict';
 
 var helpers = require('./helpers.js');
-var plugins = require('./plugins-3f7829d9.js');
-var Icon = require('./Icon-5b4af0b7.js');
+var plugins = require('./plugins-d1c9ea2a.js');
+var Icon = require('./Icon-d8c779b9.js');
+var MatchMediaMixin = require('./MatchMediaMixin-fc00267e.js');
 
 //
 var script = {
@@ -103,7 +104,7 @@ var script$1 = {
     [__vue_component__.name]: __vue_component__
   },
   configField: 'pagination',
-  mixins: [plugins.BaseComponentMixin],
+  mixins: [plugins.BaseComponentMixin, MatchMediaMixin.MatchMediaMixin],
 
   provide() {
     return {
@@ -185,19 +186,20 @@ var script$1 = {
     ariaPreviousLabel: String,
     ariaPageLabel: String,
     ariaCurrentLabel: String,
-    rootClass: String,
-    prevBtnClass: String,
-    nextBtnClass: String,
-    listClass: String,
-    linkClass: String,
-    linkCurrentClass: String,
-    ellipsisClass: String,
-    infoClass: String,
-    orderClass: String,
-    simpleClass: String,
-    roundedClass: String,
-    linkDisabledClass: String,
-    sizeClass: String
+    rootClass: [String, Function, Array],
+    prevBtnClass: [String, Function, Array],
+    nextBtnClass: [String, Function, Array],
+    listClass: [String, Function, Array],
+    linkClass: [String, Function, Array],
+    linkCurrentClass: [String, Function, Array],
+    ellipsisClass: [String, Function, Array],
+    infoClass: [String, Function, Array],
+    orderClass: [String, Function, Array],
+    simpleClass: [String, Function, Array],
+    roundedClass: [String, Function, Array],
+    linkDisabledClass: [String, Function, Array],
+    sizeClass: [String, Function, Array],
+    mobileClass: [String, Function, Array]
   },
   computed: {
     rootClasses() {
@@ -207,6 +209,8 @@ var script$1 = {
         [this.computedClass('sizeClass', 'o-pag--', this.size)]: this.size
       }, {
         [this.computedClass('simpleClass', 'o-pag--simple')]: this.simple
+      }, {
+        [this.computedClass('mobileClass', 'o-pag--mobile')]: this.isMatchMedia
       }];
     },
 

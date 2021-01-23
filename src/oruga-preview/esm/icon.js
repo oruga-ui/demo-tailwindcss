@@ -1,7 +1,7 @@
 import './helpers.js';
-import { e as registerComponent, u as use } from './plugins-3fa0f67b.js';
-import { _ as __vue_component__ } from './Icon-60401233.js';
-export { _ as OIcon } from './Icon-60401233.js';
+import { e as registerComponent, u as use } from './plugins-b98d7e7d.js';
+import { _ as __vue_component__ } from './Icon-a954439c.js';
+export { _ as OIcon } from './Icon-a954439c.js';
 
 const Plugin = {
   install(Vue) {

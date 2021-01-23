@@ -3,8 +3,8 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var helpers = require('./helpers.js');
-var plugins = require('./plugins-3f7829d9.js');
-var Tooltip = require('./Tooltip-70eb1ba3.js');
+var plugins = require('./plugins-d1c9ea2a.js');
+var Tooltip = require('./Tooltip-421c706f.js');
 
 //
 var script = {
@@ -269,7 +269,7 @@ var __vue_staticRenderFns__ = [];
 
 //
 /**
- * @displayName SliderTick
+ * @displayName Slider Tick
  */
 
 var script$1 = {
@@ -287,9 +287,9 @@ var script$1 = {
       variant: Number,
       default: 0
     },
-    tickClass: String,
-    tickHiddenClass: String,
-    tickLabelClass: String
+    tickClass: [String, Function, Array],
+    tickHiddenClass: [String, Function, Array],
+    tickLabelClass: [String, Function, Array]
   },
   computed: {
     rootClasses() {
@@ -497,16 +497,15 @@ var script$2 = {
       type: Boolean,
       default: false
     },
-    rootClass: String,
-    trackClass: String,
-    fillClass: String,
-    roundedClass: String,
-    draggingClass: String,
-    disabledClass: String,
-    biggerSliderFocusClass: String,
-    thumbWrapperClass: String,
-    thumbClass: String,
-    thumbDraggingClass: String
+    rootClass: [String, Function, Array],
+    trackClass: [String, Function, Array],
+    fillClass: [String, Function, Array],
+    thumbRoundedClass: [String, Function, Array],
+    thumbDraggingClass: [String, Function, Array],
+    disabledClass: [String, Function, Array],
+    thumbWrapperClass: [String, Function, Array],
+    thumbClass: [String, Function, Array],
+    variantClass: [String, Function, Array]
   },
 
   data() {
@@ -524,8 +523,6 @@ var script$2 = {
         [this.computedClass('sizeClass', 'o-slide--', this.size)]: this.size
       }, {
         [this.computedClass('disabledClass', 'o-slide--disabled')]: this.disabled
-      }, {
-        [this.computedClass('biggerSliderFocusClass', 'o-slide--focus')]: this.biggerSliderFocus
       }];
     },
 
@@ -541,9 +538,9 @@ var script$2 = {
 
     thumbClasses() {
       return [this.computedClass('thumbClass', 'o-slide__thumb'), {
-        [this.computedClass('draggingClass', 'o-slide__thumb--dragging')]: this.dragging
+        [this.computedClass('thumbDraggingClass', 'o-slide__thumb--dragging')]: this.dragging
       }, {
-        [this.computedClass('roundedClass', 'o-slide__thumb--rounded')]: this.rounded
+        [this.computedClass('thumbRoundedClass', 'o-slide__thumb--rounded')]: this.rounded
       }];
     },
 

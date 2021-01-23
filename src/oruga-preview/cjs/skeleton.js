@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var helpers = require('./helpers.js');
-var plugins = require('./plugins-3f7829d9.js');
+var plugins = require('./plugins-d1c9ea2a.js');
 
 /**
  * A placeholder for content to load
@@ -56,10 +56,10 @@ var script = {
      */
     position: {
       type: String,
-      default: '',
+      default: 'left',
 
       validator(value) {
-        return ['', 'centered', 'right'].indexOf(value) > -1;
+        return ['left', 'centered', 'right'].indexOf(value) > -1;
       }
 
     },
@@ -69,12 +69,12 @@ var script = {
      * @values small, medium, large
      */
     size: String,
-    rootClass: String,
-    animationClass: String,
-    positionClass: String,
-    itemClass: String,
-    itemRoundedClass: String,
-    sizeClass: String
+    rootClass: [String, Function, Array],
+    animationClass: [String, Function, Array],
+    positionClass: [String, Function, Array],
+    itemClass: [String, Function, Array],
+    itemRoundedClass: [String, Function, Array],
+    sizeClass: [String, Function, Array]
   },
 
   render(h) {

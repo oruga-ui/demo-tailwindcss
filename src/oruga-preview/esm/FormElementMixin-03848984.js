@@ -1,7 +1,5 @@
-'use strict';
-
-var helpers = require('./helpers.js');
-var plugins = require('./plugins-3f7829d9.js');
+import { getValueByPath } from './helpers.js';
+import { c as config } from './plugins-b98d7e7d.js';
 
 var FormElementMixin = {
   inject: {
@@ -46,7 +44,7 @@ var FormElementMixin = {
     useHtml5Validation: {
       type: Boolean,
       default: () => {
-        return helpers.getValueByPath(plugins.config, "useHtml5Validation", true);
+        return getValueByPath(config, "useHtml5Validation", true);
       }
     },
 
@@ -54,7 +52,7 @@ var FormElementMixin = {
     statusIcon: {
       type: Boolean,
       default: () => {
-        return helpers.getValueByPath(plugins.config, "statusIcon", true);
+        return getValueByPath(config, "statusIcon", true);
       }
     },
 
@@ -183,4 +181,4 @@ var FormElementMixin = {
   }
 };
 
-exports.FormElementMixin = FormElementMixin;
+export { FormElementMixin as F };

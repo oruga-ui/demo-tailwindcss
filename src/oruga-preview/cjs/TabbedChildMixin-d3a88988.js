@@ -1,7 +1,7 @@
 'use strict';
 
 var helpers = require('./helpers.js');
-var Icon = require('./Icon-5b4af0b7.js');
+var Icon = require('./Icon-d8c779b9.js');
 var SlotComponent = require('./SlotComponent-0a757062.js');
 
 const items = 1;

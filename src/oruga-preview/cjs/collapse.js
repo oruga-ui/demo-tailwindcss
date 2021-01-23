@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var helpers = require('./helpers.js');
-var plugins = require('./plugins-3f7829d9.js');
+var plugins = require('./plugins-d1c9ea2a.js');
 
 /**
  * An easy way to toggle what you want
@@ -52,9 +52,9 @@ var script = {
       }
 
     },
-    rootClass: [String, Function],
-    triggerClass: [String, Function],
-    contentClass: [String, Function]
+    rootClass: [String, Function, Array],
+    triggerClass: [String, Function, Array],
+    contentClass: [String, Function, Array]
   },
 
   data() {

@@ -1,7 +1,7 @@
 import { getValueByPath } from './helpers.js';
-import { B as BaseComponentMixin, c as config, n as normalizeComponent } from './plugins-3fa0f67b.js';
-import { _ as __vue_component__$1 } from './Icon-60401233.js';
-import { F as FormElementMixin } from './FormElementMixin-4e63eba5.js';
+import { B as BaseComponentMixin, c as config, n as normalizeComponent } from './plugins-b98d7e7d.js';
+import { _ as __vue_component__$1 } from './Icon-a954439c.js';
+import { F as FormElementMixin } from './FormElementMixin-03848984.js';
 
 //
 /**
@@ -76,18 +76,18 @@ var script = {
     iconRightClickable: Boolean,
 
     /** Variant of right icon */
-    iconRightType: String,
-    rootClass: String,
-    controlExpandedClass: String,
-    iconsLeftClass: String,
-    iconsRightClass: String,
-    inputClass: String,
-    roundedClass: String,
-    iconLeftClass: String,
-    iconRightClass: String,
-    counterClass: String,
-    sizeClass: String,
-    variantClass: String
+    iconRightType: [String, Function, Array],
+    rootClass: [String, Function, Array],
+    expandedClass: [String, Function, Array],
+    iconLeftSpaceClass: [String, Function, Array],
+    iconRightSpaceClass: [String, Function, Array],
+    inputClass: [String, Function, Array],
+    roundedClass: [String, Function, Array],
+    iconLeftClass: [String, Function, Array],
+    iconRightClass: [String, Function, Array],
+    counterClass: [String, Function, Array],
+    sizeClass: [String, Function, Array],
+    variantClass: [String, Function, Array]
   },
 
   data() {
@@ -102,7 +102,7 @@ var script = {
   computed: {
     rootClasses() {
       return [this.computedClass('rootClass', 'o-ctrl-input'), {
-        [this.computedClass('controlExpandedClass', 'o-ctrl-input--expanded')]: this.expanded
+        [this.computedClass('expandedClass', 'o-ctrl-input--expanded')]: this.expanded
       }];
     },
 
@@ -116,9 +116,9 @@ var script = {
       }, {
         [this.computedClass('textareaClass', 'o-input__textarea')]: this.type === 'textarea'
       }, {
-        [this.computedClass('iconsLeftClass', 'o-input-icons-left')]: this.icon
+        [this.computedClass('iconLeftSpaceClass', 'o-input-iconspace-left')]: this.icon
       }, {
-        [this.computedClass('iconsRightClass', 'o-input-icons-right')]: this.hasIconRight
+        [this.computedClass('iconRightSpaceClass', 'o-input-iconspace-right')]: this.hasIconRight
       }];
     },
 

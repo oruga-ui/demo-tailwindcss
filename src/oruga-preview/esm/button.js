@@ -1,8 +1,8 @@
 import './helpers.js';
-import { e as registerComponent, u as use } from './plugins-3fa0f67b.js';
-import './Icon-60401233.js';
-import { _ as __vue_component__ } from './Button-9d6ec996.js';
-export { _ as OButton } from './Button-9d6ec996.js';
+import { e as registerComponent, u as use } from './plugins-b98d7e7d.js';
+import './Icon-a954439c.js';
+import { _ as __vue_component__ } from './Button-a4b81b0c.js';
+export { _ as OButton } from './Button-a4b81b0c.js';
 
 const Plugin = {
   install(Vue) {

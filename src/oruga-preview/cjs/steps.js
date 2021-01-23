@@ -3,11 +3,12 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var helpers = require('./helpers.js');
-var plugins = require('./plugins-3f7829d9.js');
-var Icon = require('./Icon-5b4af0b7.js');
-var Button = require('./Button-86bbc694.js');
+var plugins = require('./plugins-d1c9ea2a.js');
+var Icon = require('./Icon-d8c779b9.js');
+var Button = require('./Button-4908c70f.js');
+var MatchMediaMixin = require('./MatchMediaMixin-fc00267e.js');
 require('./SlotComponent-0a757062.js');
-var TabbedChildMixin = require('./TabbedChildMixin-bf2e7e68.js');
+var TabbedChildMixin = require('./TabbedChildMixin-d3a88988.js');
 
 //
 /**
@@ -25,7 +26,7 @@ var script = {
     [Icon.__vue_component__.name]: Icon.__vue_component__
   },
   configField: 'steps',
-  mixins: [plugins.BaseComponentMixin, TabbedChildMixin.TabbedMixin('step')],
+  mixins: [plugins.BaseComponentMixin, MatchMediaMixin.MatchMediaMixin, TabbedChildMixin.TabbedMixin('step')],
   props: {
     /**
      * Icon pack to use for the navigation
@@ -58,6 +59,14 @@ var script = {
     },
 
     /**
+     * Step navigation is animated
+     */
+    animated: {
+      type: Boolean,
+      default: true
+    },
+
+    /**
      * Position of the marker label, optional
      * @values bottom, right, left
      */
@@ -78,24 +87,26 @@ var script = {
     },
     ariaNextLabel: String,
     ariaPreviousLabel: String,
-    rootClass: String,
-    sizeClass: String,
-    verticalClass: String,
-    positionClass: String,
-    stepsClass: String,
-    variantClass: String,
-    animatedClass: String,
-    stepMarkerRoundedClass: String,
-    stepDividerClass: String,
-    stepMarkerClass: String,
-    stepContentClass: String,
-    stepContentTransitioningClass: String,
-    stepNavigationClass: String,
-    stepDetailsClass: String,
-    stepTitleClass: String,
-    stepLinkClass: String,
-    stepLinkClickableClass: String,
-    stepLinkLabelPositionClass: String
+    rootClass: [String, Function, Array],
+    sizeClass: [String, Function, Array],
+    verticalClass: [String, Function, Array],
+    positionClass: [String, Function, Array],
+    stepsClass: [String, Function, Array],
+    variantClass: [String, Function, Array],
+    animatedClass: [String, Function, Array],
+    stepMarkerRoundedClass: [String, Function, Array],
+    stepDividerClass: [String, Function, Array],
+    stepMarkerClass: [String, Function, Array],
+    stepContentClass: [String, Function, Array],
+    stepContentTransitioningClass: [String, Function, Array],
+    stepNavigationClass: [String, Function, Array],
+    stepDetailsClass: [String, Function, Array],
+    stepTitleClass: [String, Function, Array],
+    stepLinkClass: [String, Function, Array],
+    stepLinkClickableClass: [String, Function, Array],
+    stepLinkLabelClass: [String, Function, Array],
+    stepLinkLabelPositionClass: [String, Function, Array],
+    mobileClass: [String, Function, Array]
   },
   computed: {
     wrapperClasses() {
@@ -105,6 +116,8 @@ var script = {
         [this.computedClass('verticalClass', 'o-steps__wrapper-vertical')]: this.vertical
       }, {
         [this.computedClass('positionClass', 'o-steps__wrapper-position-', this.position)]: this.position && this.vertical
+      }, {
+        [this.computedClass('mobileClass', 'o-steps--mobile')]: this.isMatchMedia
       }];
     },
 
@@ -136,12 +149,8 @@ var script = {
       return [this.computedClass('stepNavigationClass', 'o-steps__navigation')];
     },
 
-    stepDetailsClasses() {
-      return [this.computedClass('stepDetailsClass', 'o-steps__details')];
-    },
-
-    stepTitleClasses() {
-      return [this.computedClass('stepTitleClass', 'o-steps__title')];
+    stepLinkLabelClasses() {
+      return [this.computedClass('stepLinkLabelClass', 'o-steps__title')];
     },
 
     // Override mixin implementation to always have a value
@@ -259,7 +268,7 @@ var script = {
 const __vue_script__ = script;
 
 /* template */
-var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.wrapperClasses},[_c('nav',{class:_vm.mainClasses},_vm._l((_vm.items),function(childItem,index){return _c('div',{directives:[{name:"show",rawName:"v-show",value:(childItem.visible),expression:"childItem.visible"}],key:childItem.newValue,class:childItem.itemClasses},[(index > 0)?_c('span',{class:_vm.stepDividerClasses}):_vm._e(),_c('a',{class:_vm.stepLinkClasses(childItem),on:{"click":function($event){_vm.isItemClickable(childItem) && _vm.childClick(childItem);}}},[_c('div',{class:_vm.stepMarkerClasses},[(childItem.icon)?_c('o-icon',{attrs:{"icon":childItem.icon,"pack":childItem.iconPack,"size":_vm.size}}):(childItem.step)?_c('span',[_vm._v(_vm._s(childItem.step))]):_vm._e()],1),_c('div',{class:_vm.stepDetailsClasses},[_c('span',{class:_vm.stepTitleClasses},[_vm._v(_vm._s(childItem.label))])])])])}),0),_c('section',{class:_vm.stepContentClasses},[_vm._t("default")],2),_vm._t("navigation",[(_vm.hasNavigation)?_c('nav',{class:_vm.stepNavigationClasses},[_c('o-button',{attrs:{"role":"button","icon-left":_vm.iconPrev,"icon-pack":_vm.iconPack,"icon-both":"","disabled":_vm.navigationProps.previous.disabled,"aria-label":_vm.ariaPreviousLabel},on:{"click":function($event){$event.preventDefault();return _vm.navigationProps.previous.action($event)}}}),_c('o-button',{attrs:{"role":"button","icon-left":_vm.iconNext,"icon-pack":_vm.iconPack,"icon-both":"","disabled":_vm.navigationProps.next.disabled,"aria-label":_vm.ariaNextLabel},on:{"click":function($event){$event.preventDefault();return _vm.navigationProps.next.action($event)}}})],1):_vm._e()],{"previous":_vm.navigationProps.previous,"next":_vm.navigationProps.next})],2)};
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.wrapperClasses},[_c('nav',{class:_vm.mainClasses},_vm._l((_vm.items),function(childItem,index){return _c('div',{directives:[{name:"show",rawName:"v-show",value:(childItem.visible),expression:"childItem.visible"}],key:childItem.newValue,class:childItem.itemClasses},[(index > 0)?_c('span',{class:_vm.stepDividerClasses}):_vm._e(),_c('a',{class:_vm.stepLinkClasses(childItem),on:{"click":function($event){_vm.isItemClickable(childItem) && _vm.childClick(childItem);}}},[_c('div',{class:_vm.stepMarkerClasses},[(childItem.icon)?_c('o-icon',{attrs:{"icon":childItem.icon,"pack":childItem.iconPack,"size":_vm.size}}):(childItem.step)?_c('span',[_vm._v(_vm._s(childItem.step))]):_vm._e()],1),_c('div',{class:_vm.stepLinkLabelClasses},[_vm._v(_vm._s(childItem.label))])])])}),0),_c('section',{class:_vm.stepContentClasses},[_vm._t("default")],2),_vm._t("navigation",[(_vm.hasNavigation)?_c('nav',{class:_vm.stepNavigationClasses},[_c('o-button',{attrs:{"role":"button","icon-left":_vm.iconPrev,"icon-pack":_vm.iconPack,"icon-both":"","disabled":_vm.navigationProps.previous.disabled,"aria-label":_vm.ariaPreviousLabel},on:{"click":function($event){$event.preventDefault();return _vm.navigationProps.previous.action($event)}}}),_c('o-button',{attrs:{"role":"button","icon-left":_vm.iconNext,"icon-pack":_vm.iconPack,"icon-both":"","disabled":_vm.navigationProps.next.disabled,"aria-label":_vm.ariaNextLabel},on:{"click":function($event){$event.preventDefault();return _vm.navigationProps.next.action($event)}}})],1):_vm._e()],{"previous":_vm.navigationProps.previous,"next":_vm.navigationProps.next})],2)};
 var __vue_staticRenderFns__ = [];
 
   /* style */
@@ -291,6 +300,10 @@ var __vue_staticRenderFns__ = [];
     undefined
   );
 
+/**
+ * @displayName Step Item
+ */
+
 var script$1 = {
   name: 'OStepItem',
   mixins: [plugins.BaseComponentMixin, TabbedChildMixin.TabbedChildMixin('step')],
@@ -307,10 +320,10 @@ var script$1 = {
       type: Boolean,
       default: undefined
     },
-    itemClass: String,
-    variantClass: String,
-    itemActiveClass: String,
-    itemPreviousClass: String
+    itemClass: [String, Function, Array],
+    itemHeaderClass: [String, Function, Array],
+    itemHeaderActiveClass: [String, Function, Array],
+    itemHeaderPreviousClass: [String, Function, Array]
   },
   computed: {
     elementClasses() {
@@ -318,12 +331,10 @@ var script$1 = {
     },
 
     itemClasses() {
-      return [this.headerClass, this.computedClass('itemClass', 'o-steps__nav-item'), {
-        [this.computedClass('variantClass', 'o-steps__nav-item--', helpers.getStyleValue(this.variant) || this.parent.$props.variant)]: helpers.getStyleValue(this.variant) || this.parent.$props.variant
+      return [this.headerClass, this.computedClass('itemHeaderClass', 'o-steps__nav-item'), {
+        [this.computedClass('itemHeaderActiveClass', 'o-steps__nav-item-active')]: this.isActive
       }, {
-        [this.computedClass('itemActiveClass', 'o-steps__nav-item-active')]: this.isActive
-      }, {
-        [this.computedClass('itemPreviousClass', 'o-steps__nav-item-previous')]: this.parent.activeItem.index > this.index
+        [this.computedClass('itemHeaderPreviousClass', 'o-steps__nav-item-previous')]: this.parent.activeItem.index > this.index
       }];
     }
 

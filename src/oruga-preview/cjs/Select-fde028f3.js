@@ -1,9 +1,9 @@
 'use strict';
 
 var helpers = require('./helpers.js');
-var plugins = require('./plugins-3f7829d9.js');
-var Icon = require('./Icon-5b4af0b7.js');
-var FormElementMixin = require('./FormElementMixin-2354d5ae.js');
+var plugins = require('./plugins-d1c9ea2a.js');
+var Icon = require('./Icon-d8c779b9.js');
+var FormElementMixin = require('./FormElementMixin-f42a30ee.js');
 
 //
 /**
@@ -28,7 +28,6 @@ var script = {
     };
   },
 
-  emits: ['update:modelValue', 'focus', 'blur'],
   props: {
     /** @model */
     value: {
@@ -58,18 +57,17 @@ var script = {
 
     /** Same as native size */
     nativeSize: [String, Number],
-    rootClass: String,
-    iconsLeftClass: String,
-    iconsRightClass: String,
-    roundedClass: String,
-    multipleClass: String,
-    emptyClass: String,
-    expandedClass: String,
-    iconLeftClass: String,
-    iconRightClass: String,
-    sizeClass: String,
-    variantClass: String,
-    placeholderClass: String
+    rootClass: [String, Function, Array],
+    iconLeftSpaceClass: [String, Function, Array],
+    iconRightSpaceClass: [String, Function, Array],
+    roundedClass: [String, Function, Array],
+    multipleClass: [String, Function, Array],
+    expandedClass: [String, Function, Array],
+    iconLeftClass: [String, Function, Array],
+    iconRightClass: [String, Function, Array],
+    sizeClass: [String, Function, Array],
+    variantClass: [String, Function, Array],
+    placeholderClass: [String, Function, Array]
   },
 
   data() {
@@ -95,9 +93,9 @@ var script = {
       }, {
         [this.computedClass('variantClass', 'o-sel--', this.statusVariant)]: this.statusVariant
       }, {
-        [this.computedClass('iconsLeftClass', 'o-sel-icons-left')]: this.icon
+        [this.computedClass('iconLeftSpaceClass', 'o-sel-iconspace-left')]: this.icon
       }, {
-        [this.computedClass('iconsRightClass', 'o-sel-icons-right')]: this.iconRight
+        [this.computedClass('iconRightSpaceClass', 'o-sel-iconspace-right')]: this.iconRight
       }, {
         [this.computedClass('placeholderClass', 'o-sel--placeholder')]: this.placeholderVisible
       }];

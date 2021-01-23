@@ -1,6 +1,7 @@
 'use strict';
 
-var plugins = require('./plugins-3f7829d9.js');
+var plugins = require('./plugins-d1c9ea2a.js');
+var MatchMediaMixin = require('./MatchMediaMixin-fc00267e.js');
 
 var script = {
   name: 'OFieldBody',
@@ -96,7 +97,7 @@ var script$1 = {
     [__vue_component__.name]: __vue_component__
   },
   configField: 'field',
-  mixins: [plugins.BaseComponentMixin],
+  mixins: [plugins.BaseComponentMixin, MatchMediaMixin.MatchMediaMixin],
 
   provide() {
     return {
@@ -160,18 +161,19 @@ var script$1 = {
     * @values small, medium, large
     */
     labelSize: String,
-    rootClass: String,
-    horizontalClass: String,
-    groupedClass: String,
-    groupMultilineClass: String,
-    labelClass: String,
-    labelSizeClass: String,
-    labelHorizontalClass: String,
-    bodyClass: String,
-    bodyHorizontalClass: String,
-    addonsClass: String,
-    messageClass: String,
-    variantClass: String
+    rootClass: [String, Function, Array],
+    horizontalClass: [String, Function, Array],
+    groupedClass: [String, Function, Array],
+    groupMultilineClass: [String, Function, Array],
+    labelClass: [String, Function, Array],
+    labelSizeClass: [String, Function, Array],
+    labelHorizontalClass: [String, Function, Array],
+    bodyClass: [String, Function, Array],
+    bodyHorizontalClass: [String, Function, Array],
+    addonsClass: [String, Function, Array],
+    messageClass: [String, Function, Array],
+    variantClass: [String, Function, Array],
+    mobileClass: [String, Function, Array]
   },
 
   data() {
@@ -185,6 +187,8 @@ var script$1 = {
     rootClasses() {
       return [this.computedClass('rootClass', 'o-field'), {
         [this.computedClass('horizontalClass', 'o-field--horizontal')]: this.horizontal
+      }, {
+        [this.computedClass('mobileClass', 'o-field--mobile')]: this.isMatchMedia
       }];
     },
 

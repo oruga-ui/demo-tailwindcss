@@ -1,5 +1,5 @@
 import { toCssDimension } from './helpers.js';
-import { B as BaseComponentMixin, n as normalizeComponent, e as registerComponent, u as use } from './plugins-3fa0f67b.js';
+import { B as BaseComponentMixin, n as normalizeComponent, e as registerComponent, u as use } from './plugins-b98d7e7d.js';
 
 /**
  * A placeholder for content to load
@@ -52,10 +52,10 @@ var script = {
      */
     position: {
       type: String,
-      default: '',
+      default: 'left',
 
       validator(value) {
-        return ['', 'centered', 'right'].indexOf(value) > -1;
+        return ['left', 'centered', 'right'].indexOf(value) > -1;
       }
 
     },
@@ -65,12 +65,12 @@ var script = {
      * @values small, medium, large
      */
     size: String,
-    rootClass: String,
-    animationClass: String,
-    positionClass: String,
-    itemClass: String,
-    itemRoundedClass: String,
-    sizeClass: String
+    rootClass: [String, Function, Array],
+    animationClass: [String, Function, Array],
+    positionClass: [String, Function, Array],
+    itemClass: [String, Function, Array],
+    itemRoundedClass: [String, Function, Array],
+    sizeClass: [String, Function, Array]
   },
 
   render(h) {

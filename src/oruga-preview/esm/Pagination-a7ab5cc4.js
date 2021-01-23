@@ -1,6 +1,7 @@
 import { getValueByPath } from './helpers.js';
-import { c as config, n as normalizeComponent, B as BaseComponentMixin } from './plugins-3fa0f67b.js';
-import { _ as __vue_component__$2 } from './Icon-60401233.js';
+import { c as config, n as normalizeComponent, B as BaseComponentMixin } from './plugins-b98d7e7d.js';
+import { _ as __vue_component__$2 } from './Icon-a954439c.js';
+import { M as MatchMediaMixin } from './MatchMediaMixin-4e5c9540.js';
 
 //
 var script = {
@@ -101,7 +102,7 @@ var script$1 = {
     [__vue_component__.name]: __vue_component__
   },
   configField: 'pagination',
-  mixins: [BaseComponentMixin],
+  mixins: [BaseComponentMixin, MatchMediaMixin],
 
   provide() {
     return {
@@ -183,19 +184,20 @@ var script$1 = {
     ariaPreviousLabel: String,
     ariaPageLabel: String,
     ariaCurrentLabel: String,
-    rootClass: String,
-    prevBtnClass: String,
-    nextBtnClass: String,
-    listClass: String,
-    linkClass: String,
-    linkCurrentClass: String,
-    ellipsisClass: String,
-    infoClass: String,
-    orderClass: String,
-    simpleClass: String,
-    roundedClass: String,
-    linkDisabledClass: String,
-    sizeClass: String
+    rootClass: [String, Function, Array],
+    prevBtnClass: [String, Function, Array],
+    nextBtnClass: [String, Function, Array],
+    listClass: [String, Function, Array],
+    linkClass: [String, Function, Array],
+    linkCurrentClass: [String, Function, Array],
+    ellipsisClass: [String, Function, Array],
+    infoClass: [String, Function, Array],
+    orderClass: [String, Function, Array],
+    simpleClass: [String, Function, Array],
+    roundedClass: [String, Function, Array],
+    linkDisabledClass: [String, Function, Array],
+    sizeClass: [String, Function, Array],
+    mobileClass: [String, Function, Array]
   },
   computed: {
     rootClasses() {
@@ -205,6 +207,8 @@ var script$1 = {
         [this.computedClass('sizeClass', 'o-pag--', this.size)]: this.size
       }, {
         [this.computedClass('simpleClass', 'o-pag--simple')]: this.simple
+      }, {
+        [this.computedClass('mobileClass', 'o-pag--mobile')]: this.isMatchMedia
       }];
     },
 

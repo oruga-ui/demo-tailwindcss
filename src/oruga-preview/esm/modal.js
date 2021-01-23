@@ -1,6 +1,7 @@
 import { getValueByPath, toCssDimension, removeElement, merge } from './helpers.js';
-import { B as BaseComponentMixin, c as config, n as normalizeComponent, e as registerComponent, b as registerComponentProgrammatic, u as use, V as VueInstance } from './plugins-3fa0f67b.js';
-import { _ as __vue_component__$1 } from './Icon-60401233.js';
+import { B as BaseComponentMixin, c as config, n as normalizeComponent, e as registerComponent, b as registerComponentProgrammatic, u as use, V as VueInstance } from './plugins-b98d7e7d.js';
+import { _ as __vue_component__$1 } from './Icon-a954439c.js';
+import { M as MatchMediaMixin } from './MatchMediaMixin-4e5c9540.js';
 import { d as directive } from './trapFocus-25a621e6.js';
 
 //
@@ -20,7 +21,7 @@ var script = {
   directives: {
     trapFocus: directive
   },
-  mixins: [BaseComponentMixin],
+  mixins: [BaseComponentMixin, MatchMediaMixin],
   props: {
     /** Whether modal is active or not, use the .sync modifier (Vue 2.x) or v-model:active (Vue 3.x) to make it two-way binding */
     active: Boolean,
@@ -124,23 +125,24 @@ var script = {
         return getValueByPath(config, 'modal.autoFocus', true);
       }
     },
-    rootClass: String,
-    backgroundClass: String,
-    contentClass: String,
-    closeClass: String,
-    fullScreenClass: String,
 
     /** Icon name */
     closeIcon: {
       type: String,
       default: () => {
-        return getValueByPath(config, 'close.icon', 'times');
+        return getValueByPath(config, 'modal.closeIcon', 'times');
       }
     },
     closeIconSize: {
       type: String,
       default: 'medium'
-    }
+    },
+    rootClass: [String, Function, Array],
+    overlayClass: [String, Function, Array],
+    contentClass: [String, Function, Array],
+    closeClass: [String, Function, Array],
+    fullScreenClass: [String, Function, Array],
+    mobileClass: [String, Function, Array]
   },
 
   data() {
@@ -155,11 +157,13 @@ var script = {
 
   computed: {
     rootClasses() {
-      return [this.computedClass('rootClass', 'o-modal')];
+      return [this.computedClass('rootClass', 'o-modal'), {
+        [this.computedClass('mobileClass', 'o-modal--mobile')]: this.isMatchMedia
+      }];
     },
 
-    backgroundClasses() {
-      return [this.computedClass('backgroundClass', 'o-modal__background')];
+    overlayClasses() {
+      return [this.computedClass('overlayClass', 'o-modal__overlay')];
     },
 
     contentClasses() {
@@ -335,7 +339,7 @@ var script = {
 const __vue_script__ = script;
 
 /* template */
-var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":_vm.animation},on:{"after-enter":_vm.afterEnter,"before-leave":_vm.beforeLeave,"after-leave":_vm.afterLeave}},[(!_vm.destroyed)?_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.isActive),expression:"isActive"},{name:"trap-focus",rawName:"v-trap-focus",value:(_vm.trapFocus),expression:"trapFocus"}],class:_vm.rootClasses,attrs:{"tabindex":"-1","role":_vm.ariaRole,"aria-modal":_vm.ariaModal}},[_c('div',{class:_vm.backgroundClasses,on:{"click":function($event){return _vm.cancel('outside')}}}),_c('div',{class:_vm.contentClasses,style:(_vm.customStyle)},[(_vm.component)?_c(_vm.component,_vm._g(_vm._b({tag:"component",on:{"close":_vm.close}},'component',_vm.props,false),_vm.events)):(_vm.content)?_c('div',[_vm._v(" "+_vm._s(_vm.content)+" ")]):_vm._t("default"),(_vm.showX)?_c('o-icon',{directives:[{name:"show",rawName:"v-show",value:(!_vm.animating),expression:"!animating"}],class:_vm.closeClasses,attrs:{"clickable":"","icon":_vm.closeIcon,"size":_vm.closeIconSize},nativeOn:{"click":function($event){return _vm.cancel('x')}}}):_vm._e()],2)]):_vm._e()])};
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":_vm.animation},on:{"after-enter":_vm.afterEnter,"before-leave":_vm.beforeLeave,"after-leave":_vm.afterLeave}},[(!_vm.destroyed)?_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.isActive),expression:"isActive"},{name:"trap-focus",rawName:"v-trap-focus",value:(_vm.trapFocus),expression:"trapFocus"}],class:_vm.rootClasses,attrs:{"tabindex":"-1","role":_vm.ariaRole,"aria-modal":_vm.ariaModal}},[_c('div',{class:_vm.overlayClasses,on:{"click":function($event){return _vm.cancel('outside')}}}),_c('div',{class:_vm.contentClasses,style:(_vm.customStyle)},[(_vm.component)?_c(_vm.component,_vm._g(_vm._b({tag:"component",on:{"close":_vm.close}},'component',_vm.props,false),_vm.events)):(_vm.content)?_c('div',[_vm._v(" "+_vm._s(_vm.content)+" ")]):_vm._t("default"),(_vm.showX)?_c('o-icon',{directives:[{name:"show",rawName:"v-show",value:(!_vm.animating),expression:"!animating"}],class:_vm.closeClasses,attrs:{"clickable":"","icon":_vm.closeIcon,"size":_vm.closeIconSize},nativeOn:{"click":function($event){return _vm.cancel('x')}}}):_vm._e()],2)]):_vm._e()])};
 var __vue_staticRenderFns__ = [];
 
   /* style */

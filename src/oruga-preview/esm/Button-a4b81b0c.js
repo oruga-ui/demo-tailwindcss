@@ -1,6 +1,6 @@
 import { getValueByPath } from './helpers.js';
-import { B as BaseComponentMixin, c as config, n as normalizeComponent } from './plugins-3fa0f67b.js';
-import { _ as __vue_component__$1 } from './Icon-60401233.js';
+import { B as BaseComponentMixin, c as config, n as normalizeComponent } from './plugins-b98d7e7d.js';
+import { _ as __vue_component__$1 } from './Icon-a954439c.js';
 
 //
 /**
@@ -101,15 +101,15 @@ var script = {
     /**  @ignore */
     iconBoth: Boolean,
     // This is used internally
-    rootClass: [String, Function],
-    outlinedClass: [String, Function],
-    invertedClass: [String, Function],
-    expandedClass: [String, Function],
-    roundedClass: [String, Function],
-    disabledClass: [String, Function],
-    iconClass: [String, Function],
-    sizeClass: [String, Function],
-    variantClass: [String, Function]
+    rootClass: [String, Function, Array],
+    outlinedClass: [String, Function, Array],
+    invertedClass: [String, Function, Array],
+    expandedClass: [String, Function, Array],
+    roundedClass: [String, Function, Array],
+    disabledClass: [String, Function, Array],
+    iconClass: [String, Function, Array],
+    sizeClass: [String, Function, Array],
+    variantClass: [String, Function, Array]
   },
   computed: {
     rootClasses() {

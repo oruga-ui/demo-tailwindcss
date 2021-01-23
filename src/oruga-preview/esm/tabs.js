@@ -1,8 +1,8 @@
 import { getValueByPath } from './helpers.js';
-import { B as BaseComponentMixin, c as config, n as normalizeComponent, e as registerComponent, u as use } from './plugins-3fa0f67b.js';
-import './Icon-60401233.js';
+import { B as BaseComponentMixin, c as config, n as normalizeComponent, e as registerComponent, u as use } from './plugins-b98d7e7d.js';
+import './Icon-a954439c.js';
 import './SlotComponent-c00a1886.js';
-import { T as TabbedMixin, a as TabbedChildMixin } from './TabbedChildMixin-7b377ffb.js';
+import { T as TabbedMixin, a as TabbedChildMixin } from './TabbedChildMixin-7a218f90.js';
 
 //
 /**
@@ -42,46 +42,28 @@ var script = {
 
     /** Show tab items multiline when there is no space */
     multiline: Boolean,
-    rootClass: String,
-    positionWrapperClass: String,
-    expandedWrapperClass: String,
-    verticalWrapperClass: String,
-    multilineWrapperClass: String,
-    tabsClass: String,
-    sizeClass: String,
-    positionClass: String,
-    contentClass: String,
-    transitioningClass: String,
-    tabItemHeaderClass: String,
-    tabItemHeaderTypeClass: String,
-    tabItemHeaderIconClass: String,
-    tabItemHeaderTextClass: String,
-    tabItemHeaderActiveClass: String,
-    tabItemHeaderDisabledClass: String,
-    tabItemWrapperClass: String
-  },
-  methods: {
-    itemHeaderClasses(childItem) {
-      return [{
-        [this.computedClass('tabItemHeaderActiveClass', 'o-tabs__nav-item-{*}--active', this.type)]: childItem.isActive
-      }, {
-        [this.computedClass('tabItemHeaderDisabledClass', 'o-tabs__nav-item-{*}--disabled', this.type)]: childItem.disabled
-      }, {
-        [this.computedClass('tabItemHeaderTypeClass', 'o-tabs__nav-item-', this.type)]: this.type
-      }];
-    }
-
+    rootClass: [String, Function, Array],
+    positionClass: [String, Function, Array],
+    expandedClass: [String, Function, Array],
+    verticalClass: [String, Function, Array],
+    multilineClass: [String, Function, Array],
+    navTabsClass: [String, Function, Array],
+    navSizeClass: [String, Function, Array],
+    navPositionClass: [String, Function, Array],
+    contentClass: [String, Function, Array],
+    transitioningClass: [String, Function, Array],
+    tabItemWrapperClass: [String, Function, Array]
   },
   computed: {
     rootClasses() {
       return [this.computedClass('rootClass', 'o-tabs'), {
-        [this.computedClass('positionWrapperClass', 'o-tabs--', this.position)]: this.position && this.vertical
+        [this.computedClass('positionClass', 'o-tabs--', this.position)]: this.position && this.vertical
       }, {
-        [this.computedClass('expandedWrapperClass', 'o-tabs--fullwidth')]: this.expanded
+        [this.computedClass('expandedClass', 'o-tabs--fullwidth')]: this.expanded
       }, {
-        [this.computedClass('verticalWrapperClass', 'o-tabs--vertical')]: this.vertical
+        [this.computedClass('verticalClass', 'o-tabs--vertical')]: this.vertical
       }, {
-        [this.computedClass('multilineWrapperClass', 'o-tabs--multiline')]: this.multiline
+        [this.computedClass('multilineClass', 'o-tabs--multiline')]: this.multiline
       }];
     },
 
@@ -90,10 +72,10 @@ var script = {
     },
 
     navClasses() {
-      return [this.computedClass('tabsClass', 'o-tabs__nav'), {
-        [this.computedClass('sizeClass', 'o-tabs__nav--', this.size)]: this.size
+      return [this.computedClass('navTabsClass', 'o-tabs__nav'), {
+        [this.computedClass('navSizeClass', 'o-tabs__nav--', this.size)]: this.size
       }, {
-        [this.computedClass('positionClass', 'o-tabs__nav--', this.position)]: this.position && !this.vertical
+        [this.computedClass('navPositionClass', 'o-tabs__nav--', this.position)]: this.position && !this.vertical
       }];
     },
 
@@ -101,14 +83,6 @@ var script = {
       return [this.computedClass('contentClass', 'o-tabs__content'), {
         [this.computedClass('transitioningClass', 'o-tabs__content--transitioning')]: this.isTransitioning
       }];
-    },
-
-    itemHeaderIconClasses() {
-      return [this.computedClass('tabItemHeaderIconClass', 'o-tabs__nav-item-icon')];
-    },
-
-    itemHeaderTextClasses() {
-      return [this.computedClass('tabItemHeaderTextClass', 'o-tabs__nav-item-text')];
     }
 
   }
@@ -118,7 +92,7 @@ var script = {
 const __vue_script__ = script;
 
 /* template */
-var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.rootClasses},[_c('nav',{class:_vm.navClasses},_vm._l((_vm.items),function(childItem){return _c('div',{directives:[{name:"show",rawName:"v-show",value:(childItem.visible),expression:"childItem.visible"}],key:childItem.newValue,class:_vm.itemWrapperClasses},[(childItem.$scopedSlots.header)?_c('o-slot-component',{class:childItem.headerClasses,attrs:{"component":childItem,"name":"header","tag":"button"},nativeOn:{"click":function($event){return _vm.childClick(childItem)}}}):_c('button',{class:_vm.itemHeaderClasses(childItem),on:{"click":function($event){return _vm.childClick(childItem)}}},[(childItem.icon)?_c('o-icon',{attrs:{"rootClass":_vm.itemHeaderIconClasses.join(' '),"icon":childItem.icon,"pack":childItem.iconPack,"size":_vm.size}}):_vm._e(),_c('span',{class:_vm.itemHeaderTextClasses},[_vm._v(_vm._s(childItem.label))])],1)],1)}),0),_c('section',{class:_vm.contentClasses},[_vm._t("default")],2)])};
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.rootClasses},[_c('nav',{class:_vm.navClasses},_vm._l((_vm.items),function(childItem){return _c('div',{directives:[{name:"show",rawName:"v-show",value:(childItem.visible),expression:"childItem.visible"}],key:childItem.newValue,class:_vm.itemWrapperClasses},[(childItem.$scopedSlots.header)?_c('o-slot-component',{class:childItem.headerClasses,attrs:{"component":childItem,"name":"header","tag":"button"},nativeOn:{"click":function($event){return _vm.childClick(childItem)}}}):_c('button',{class:childItem.headerClasses,on:{"click":function($event){return _vm.childClick(childItem)}}},[(childItem.icon)?_c('o-icon',{attrs:{"rootClass":childItem.headerIconClasses,"icon":childItem.icon,"pack":childItem.iconPack,"size":_vm.size}}):_vm._e(),_c('span',{class:childItem.headerTextClasses},[_vm._v(_vm._s(childItem.label))])],1)],1)}),0),_c('section',{class:_vm.contentClasses},[_vm._t("default")],2)])};
 var __vue_staticRenderFns__ = [];
 
   /* style */
@@ -161,11 +135,13 @@ var script$1 = {
   props: {
     /** Item will be disabled */
     disabled: Boolean,
-    itemClass: String,
-    itemHeaderClass: String,
-    itemHeaderActiveClass: String,
-    itemHeaderDisabledClass: String,
-    itemHeaderTypeClass: String
+    itemClass: [String, Function, Array],
+    itemHeaderClass: [String, Function, Array],
+    itemHeaderActiveClass: [String, Function, Array],
+    itemHeaderDisabledClass: [String, Function, Array],
+    itemHeaderTypeClass: [String, Function, Array],
+    itemHeaderIconClass: [String, Function, Array],
+    itemHeaderTextClass: [String, Function, Array]
   },
   computed: {
     elementClasses() {
@@ -174,16 +150,22 @@ var script$1 = {
 
     headerClasses() {
       return [{
+        [this.computedClass('itemHeaderClass', 'o-tabs__nav-item-{*}', this.$parent.type)]: this.$parent.type
+      }, {
         [this.computedClass('itemHeaderActiveClass', 'o-tabs__nav-item-{*}--active', this.$parent.type)]: this.isActive
       }, {
         [this.computedClass('itemHeaderDisabledClass', 'o-tabs__nav-item-{*}--disabled', this.$parent.type)]: this.disabled
       }, {
         [this.computedClass('itemHeaderTypeClass', 'o-tabs__nav-item-', this.$parent.type)]: this.$parent.type
-      } // this.headerClass || this.computedClass('itemHeaderClass', 'o-tabs__nav-item'),
-      // { [this.computedClass('itemHeaderTypeClass', 'o-tabs__nav-item--', this.$parent.type)]: this.$parent.type },
-      // { [this.computedClass('itemHeaderActiveClass', 'o-tabs__nav-item--active')]: this.isActive },
-      // { [this.computedClass('itemHeaderDisabledClass', 'o-tabs__nav-item--disabled')]: this.disabled }
-      ];
+      }];
+    },
+
+    headerIconClasses() {
+      return [this.computedClass('itemHeaderIconClass', 'o-tabs__nav-item-icon')];
+    },
+
+    headerTextClasses() {
+      return [this.computedClass('itemHeaderTextClass', 'o-tabs__nav-item-text')];
     }
 
   }

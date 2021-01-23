@@ -1,5 +1,5 @@
 import { getValueByPath, createAbsoluteElement, removeElement } from './helpers.js';
-import { B as BaseComponentMixin, c as config, n as normalizeComponent } from './plugins-3fa0f67b.js';
+import { B as BaseComponentMixin, c as config, n as normalizeComponent } from './plugins-b98d7e7d.js';
 
 //
 /**
@@ -89,15 +89,16 @@ var script = {
     * Color of the tooltip
     * @values primary, info, success, warning, danger, and any other custom color
     */
-    variant: String,
-    rootClass: String,
-    contentClass: String,
-    triggerClass: String,
-    multilineClass: String,
-    alwaysClass: String,
-    variantClass: String,
-    arrowClass: String,
-    arrowOrderClass: String
+    variant: [String, Function, Array],
+    rootClass: [String, Function, Array],
+    contentClass: [String, Function, Array],
+    orderClass: [String, Function, Array],
+    triggerClass: [String, Function, Array],
+    multilineClass: [String, Function, Array],
+    alwaysClass: [String, Function, Array],
+    variantClass: [String, Function, Array],
+    arrowClass: [String, Function, Array],
+    arrowOrderClass: [String, Function, Array]
   },
 
   data() {
@@ -181,7 +182,7 @@ var script = {
         wrapper.style.position = 'absolute';
         wrapper.style.top = `${top}px`;
         wrapper.style.left = `${left}px`;
-        wrapper.style.zIndex = this.isActive || this.always ? '9999' : '-1';
+        wrapper.style.zIndex = this.isActive || this.always ? '99' : '-1';
         this.triggerStyle = {
           zIndex: this.isActive || this.always ? '100' : undefined
         };

@@ -1,7 +1,7 @@
 import { getValueByPath } from './helpers.js';
-import { B as BaseComponentMixin, c as config, n as normalizeComponent } from './plugins-3fa0f67b.js';
-import { _ as __vue_component__$1 } from './Icon-60401233.js';
-import { F as FormElementMixin } from './FormElementMixin-4e63eba5.js';
+import { B as BaseComponentMixin, c as config, n as normalizeComponent } from './plugins-b98d7e7d.js';
+import { _ as __vue_component__$1 } from './Icon-a954439c.js';
+import { F as FormElementMixin } from './FormElementMixin-03848984.js';
 
 //
 /**
@@ -26,7 +26,6 @@ var script = {
     };
   },
 
-  emits: ['update:modelValue', 'focus', 'blur'],
   props: {
     /** @model */
     value: {
@@ -56,18 +55,17 @@ var script = {
 
     /** Same as native size */
     nativeSize: [String, Number],
-    rootClass: String,
-    iconsLeftClass: String,
-    iconsRightClass: String,
-    roundedClass: String,
-    multipleClass: String,
-    emptyClass: String,
-    expandedClass: String,
-    iconLeftClass: String,
-    iconRightClass: String,
-    sizeClass: String,
-    variantClass: String,
-    placeholderClass: String
+    rootClass: [String, Function, Array],
+    iconLeftSpaceClass: [String, Function, Array],
+    iconRightSpaceClass: [String, Function, Array],
+    roundedClass: [String, Function, Array],
+    multipleClass: [String, Function, Array],
+    expandedClass: [String, Function, Array],
+    iconLeftClass: [String, Function, Array],
+    iconRightClass: [String, Function, Array],
+    sizeClass: [String, Function, Array],
+    variantClass: [String, Function, Array],
+    placeholderClass: [String, Function, Array]
   },
 
   data() {
@@ -93,9 +91,9 @@ var script = {
       }, {
         [this.computedClass('variantClass', 'o-sel--', this.statusVariant)]: this.statusVariant
       }, {
-        [this.computedClass('iconsLeftClass', 'o-sel-icons-left')]: this.icon
+        [this.computedClass('iconLeftSpaceClass', 'o-sel-iconspace-left')]: this.icon
       }, {
-        [this.computedClass('iconsRightClass', 'o-sel-icons-right')]: this.iconRight
+        [this.computedClass('iconRightSpaceClass', 'o-sel-iconspace-right')]: this.iconRight
       }, {
         [this.computedClass('placeholderClass', 'o-sel--placeholder')]: this.placeholderVisible
       }];

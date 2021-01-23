@@ -36,9 +36,12 @@ const _defaultSuffixProcessor = (input, suffix) => {
 };
 
 var BaseComponentMixin = {
+  props: {
+    override: Boolean
+  },
   methods: {
     computedClass(field, defaultValue, suffix = '') {
-      let override = getValueByPath(config, `${this.$options.configField}.override`, false);
+      let override = this.$props.override || getValueByPath(config, `${this.$options.configField}.override`, false);
       let overrideClass = getValueByPath(config, `${this.$options.configField}.${field}.override`, override);
       let globalClass = getValueByPath(config, `${this.$options.configField}.${field}.class`, '') || getValueByPath(config, `${this.$options.configField}.${field}`, '');
       let currentClass = this.$props[field];

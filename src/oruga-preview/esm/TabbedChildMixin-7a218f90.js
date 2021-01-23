@@ -1,5 +1,5 @@
 import { hasFlag } from './helpers.js';
-import { _ as __vue_component__ } from './Icon-60401233.js';
+import { _ as __vue_component__ } from './Icon-a954439c.js';
 import { S as SlotComponent } from './SlotComponent-c00a1886.js';
 
 const items = 1;

@@ -1,8 +1,8 @@
 import { getValueByPath, toCssDimension, debounce, createAbsoluteElement, removeElement } from './helpers.js';
-import { B as BaseComponentMixin, c as config, n as normalizeComponent, e as registerComponent, u as use } from './plugins-3fa0f67b.js';
-import './Icon-60401233.js';
-import { F as FormElementMixin } from './FormElementMixin-4e63eba5.js';
-import { _ as __vue_component__$1 } from './Input-eac33c4f.js';
+import { B as BaseComponentMixin, c as config, n as normalizeComponent, e as registerComponent, u as use } from './plugins-b98d7e7d.js';
+import './Icon-a954439c.js';
+import { F as FormElementMixin } from './FormElementMixin-03848984.js';
+import { _ as __vue_component__$1 } from './Input-6a0245ab.js';
 
 //
 /**
@@ -77,7 +77,7 @@ var script = {
      * Position of dropdown
      * @values auto, top, bottom
      */
-    dropdownPosition: {
+    menuPosition: {
       type: String,
       default: 'auto'
     },
@@ -113,13 +113,13 @@ var script = {
       type: Array,
       default: () => ['Tab', 'Enter']
     },
-    rootClass: [String, Function],
-    menuClass: [String, Function],
-    expandedClass: [String, Function],
-    menuPositionClass: [String, Function],
-    itemClass: [String, Function],
-    itemHoverClass: [String, Function],
-    itemGroupTitleClass: [String, Function],
+    rootClass: [String, Function, Array],
+    menuClass: [String, Function, Array],
+    expandedClass: [String, Function, Array],
+    menuPositionClass: [String, Function, Array],
+    itemClass: [String, Function, Array],
+    itemHoverClass: [String, Function, Array],
+    itemGroupTitleClass: [String, Function, Array],
 
     /** Classes to apply on internal input (@see o-input style docs) */
     inputClasses: Object
@@ -130,7 +130,7 @@ var script = {
       selected: null,
       hovered: null,
       isActive: false,
-      newValue: this.model,
+      newValue: this.value,
       newAutocomplete: this.autocomplete || 'off',
       isListInViewportVertically: true,
       hasFocus: false,
@@ -239,7 +239,7 @@ var script = {
     },
 
     newDropdownPosition() {
-      if (this.dropdownPosition === 'top' || this.dropdownPosition === 'auto' && !this.isListInViewportVertically) {
+      if (this.menuPosition === 'top' || this.menuPosition === 'auto' && !this.isListInViewportVertically) {
         return 'top';
       }
 
@@ -284,7 +284,7 @@ var script = {
      * to open upwards.
      */
     isActive(active) {
-      if (this.dropdownPosition === 'auto') {
+      if (this.menuPosition === 'auto') {
         if (active) {
           this.calcDropdownInViewportVertical();
         } else {
@@ -359,6 +359,11 @@ var script = {
     setSelected(option, closeDropdown = true, event = undefined) {
       if (option === undefined) return;
       this.selected = option;
+      /**
+       * @property {Object} selected selected option
+       * @property {Event} event native event
+       */
+
       this.$emit('select', this.selected, event);
 
       if (this.selected !== null) {
@@ -605,7 +610,7 @@ var script = {
   created() {
     if (typeof window !== 'undefined') {
       document.addEventListener('click', this.clickedOutside);
-      if (this.dropdownPosition === 'auto') window.addEventListener('resize', this.calcDropdownInViewportVertical);
+      if (this.menuPosition === 'auto') window.addEventListener('resize', this.calcDropdownInViewportVertical);
     }
   },
 
@@ -625,7 +630,7 @@ var script = {
   beforeDestroy() {
     if (typeof window !== 'undefined') {
       document.removeEventListener('click', this.clickedOutside);
-      if (this.dropdownPosition === 'auto') window.removeEventListener('resize', this.calcDropdownInViewportVertical);
+      if (this.menuPosition === 'auto') window.removeEventListener('resize', this.calcDropdownInViewportVertical);
     }
 
     if (this.checkInfiniteScroll && this.$refs.dropdown) {

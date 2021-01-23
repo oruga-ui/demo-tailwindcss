@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 require('./helpers.js');
-var plugins = require('./plugins-3f7829d9.js');
+var plugins = require('./plugins-d1c9ea2a.js');
 
 //
 /**
@@ -76,18 +76,18 @@ var script = {
       type: Boolean,
       default: false
     },
-    rootClass: String,
-    disabledClass: String,
-    checkClass: String,
-    checkCheckedClass: String,
-    checkSwitchClass: String,
-    roundedClass: String,
-    labelClass: String,
-    sizeClass: String,
-    variantClass: String,
-    elementsWrapperClass: String,
-    passiveVariantClass: String,
-    leftLabelClass: String
+    rootClass: [String, Function, Array],
+    disabledClass: [String, Function, Array],
+    checkClass: [String, Function, Array],
+    checkCheckedClass: [String, Function, Array],
+    checkSwitchClass: [String, Function, Array],
+    roundedClass: [String, Function, Array],
+    labelClass: [String, Function, Array],
+    sizeClass: [String, Function, Array],
+    variantClass: [String, Function, Array],
+    elementsWrapperClass: [String, Function, Array],
+    passiveVariantClass: [String, Function, Array],
+    leftLabelClass: [String, Function, Array]
   },
 
   data() {

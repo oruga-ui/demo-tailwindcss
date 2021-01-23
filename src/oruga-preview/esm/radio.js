@@ -1,6 +1,6 @@
 import './helpers.js';
-import { B as BaseComponentMixin, n as normalizeComponent, e as registerComponent, u as use } from './plugins-3fa0f67b.js';
-import { C as CheckRadioMixin } from './CheckRadioMixin-e43b9266.js';
+import { B as BaseComponentMixin, n as normalizeComponent, e as registerComponent, u as use } from './plugins-b98d7e7d.js';
+import { C as CheckRadioMixin } from './CheckRadioMixin-7f4f93a9.js';
 
 //
 /**
@@ -15,17 +15,21 @@ var script = {
   mixins: [BaseComponentMixin, CheckRadioMixin],
   configField: 'radio',
   props: {
-    rootClass: String,
-    disabledClass: String,
-    checkClass: String,
-    labelClass: String,
-    sizeClass: String,
-    variantClass: String
+    rootClass: [String, Function, Array],
+    disabledClass: [String, Function, Array],
+    checkedClass: [String, Function, Array],
+    checkCheckedClass: [String, Function, Array],
+    checkClass: [String, Function, Array],
+    labelClass: [String, Function, Array],
+    sizeClass: [String, Function, Array],
+    variantClass: [String, Function, Array]
   },
   computed: {
     rootClasses() {
       return [this.computedClass('rootClass', 'o-radio'), {
         [this.computedClass('sizeClass', 'o-radio--', this.size)]: this.size
+      }, {
+        [this.computedClass('checkedClass', 'o-radio--checked')]: this.value === this.nativeValue
       }, {
         [this.computedClass('disabledClass', 'o-radio--disabled')]: this.disabled
       }, {

@@ -1,8 +1,8 @@
 'use strict';
 
 var helpers = require('./helpers.js');
-var plugins = require('./plugins-3f7829d9.js');
-var Icon = require('./Icon-5b4af0b7.js');
+var plugins = require('./plugins-d1c9ea2a.js');
+var Icon = require('./Icon-d8c779b9.js');
 
 //
 /**
@@ -103,15 +103,15 @@ var script = {
     /**  @ignore */
     iconBoth: Boolean,
     // This is used internally
-    rootClass: [String, Function],
-    outlinedClass: [String, Function],
-    invertedClass: [String, Function],
-    expandedClass: [String, Function],
-    roundedClass: [String, Function],
-    disabledClass: [String, Function],
-    iconClass: [String, Function],
-    sizeClass: [String, Function],
-    variantClass: [String, Function]
+    rootClass: [String, Function, Array],
+    outlinedClass: [String, Function, Array],
+    invertedClass: [String, Function, Array],
+    expandedClass: [String, Function, Array],
+    roundedClass: [String, Function, Array],
+    disabledClass: [String, Function, Array],
+    iconClass: [String, Function, Array],
+    sizeClass: [String, Function, Array],
+    variantClass: [String, Function, Array]
   },
   computed: {
     rootClasses() {

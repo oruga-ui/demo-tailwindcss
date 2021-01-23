@@ -3,8 +3,8 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 require('./helpers.js');
-var plugins = require('./plugins-3f7829d9.js');
-var FormElementMixin = require('./FormElementMixin-2354d5ae.js');
+var plugins = require('./plugins-d1c9ea2a.js');
+var FormElementMixin = require('./FormElementMixin-f42a30ee.js');
 var ssr = require('./ssr-39c7e185.js');
 
 //
@@ -62,12 +62,12 @@ var script = {
       type: Boolean,
       default: false
     },
-    rootClass: String,
-    draggableClass: String,
-    variantClass: String,
-    expandedClass: String,
-    disabledClass: String,
-    hoveredClass: String
+    rootClass: [String, Function, Array],
+    draggableClass: [String, Function, Array],
+    variantClass: [String, Function, Array],
+    expandedClass: [String, Function, Array],
+    disabledClass: [String, Function, Array],
+    hoveredClass: [String, Function, Array]
   },
 
   data() {
@@ -81,18 +81,16 @@ var script = {
     rootClasses() {
       return [this.computedClass('rootClass', 'o-upl'), {
         [this.computedClass('expandedClass', 'o-upl--expanded')]: this.expanded
+      }, {
+        [this.computedClass('disabledClass', 'o-upl--disabled')]: this.disabled
       }];
     },
 
     draggableClasses() {
       return [this.computedClass('draggableClass', 'o-upl__draggable'), {
-        [this.computedClass('variantClass', 'o-upl__draggable--', this.variant)]: this.variant
-      }, {
         [this.computedClass('hoveredClass', 'o-upl__draggable--hovered')]: !this.variant && this.dragDropFocus
       }, {
         [this.computedClass('variantClass', 'o-upl__draggable--hovered-', this.variant)]: this.variant && this.dragDropFocus
-      }, {
-        [this.computedClass('disabledClass', 'o-upl__draggable--disabled')]: this.disabled
       }];
     }
 

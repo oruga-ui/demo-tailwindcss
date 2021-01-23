@@ -3,10 +3,10 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var helpers = require('./helpers.js');
-var plugins = require('./plugins-3f7829d9.js');
-require('./Icon-5b4af0b7.js');
-var FormElementMixin = require('./FormElementMixin-2354d5ae.js');
-var Input = require('./Input-a0188fd0.js');
+var plugins = require('./plugins-d1c9ea2a.js');
+require('./Icon-d8c779b9.js');
+var FormElementMixin = require('./FormElementMixin-f42a30ee.js');
+var Input = require('./Input-beb368bf.js');
 
 //
 /**
@@ -81,7 +81,7 @@ var script = {
      * Position of dropdown
      * @values auto, top, bottom
      */
-    dropdownPosition: {
+    menuPosition: {
       type: String,
       default: 'auto'
     },
@@ -117,13 +117,13 @@ var script = {
       type: Array,
       default: () => ['Tab', 'Enter']
     },
-    rootClass: [String, Function],
-    menuClass: [String, Function],
-    expandedClass: [String, Function],
-    menuPositionClass: [String, Function],
-    itemClass: [String, Function],
-    itemHoverClass: [String, Function],
-    itemGroupTitleClass: [String, Function],
+    rootClass: [String, Function, Array],
+    menuClass: [String, Function, Array],
+    expandedClass: [String, Function, Array],
+    menuPositionClass: [String, Function, Array],
+    itemClass: [String, Function, Array],
+    itemHoverClass: [String, Function, Array],
+    itemGroupTitleClass: [String, Function, Array],
 
     /** Classes to apply on internal input (@see o-input style docs) */
     inputClasses: Object
@@ -134,7 +134,7 @@ var script = {
       selected: null,
       hovered: null,
       isActive: false,
-      newValue: this.model,
+      newValue: this.value,
       newAutocomplete: this.autocomplete || 'off',
       isListInViewportVertically: true,
       hasFocus: false,
@@ -243,7 +243,7 @@ var script = {
     },
 
     newDropdownPosition() {
-      if (this.dropdownPosition === 'top' || this.dropdownPosition === 'auto' && !this.isListInViewportVertically) {
+      if (this.menuPosition === 'top' || this.menuPosition === 'auto' && !this.isListInViewportVertically) {
         return 'top';
       }
 
@@ -288,7 +288,7 @@ var script = {
      * to open upwards.
      */
     isActive(active) {
-      if (this.dropdownPosition === 'auto') {
+      if (this.menuPosition === 'auto') {
         if (active) {
           this.calcDropdownInViewportVertical();
         } else {
@@ -363,6 +363,11 @@ var script = {
     setSelected(option, closeDropdown = true, event = undefined) {
       if (option === undefined) return;
       this.selected = option;
+      /**
+       * @property {Object} selected selected option
+       * @property {Event} event native event
+       */
+
       this.$emit('select', this.selected, event);
 
       if (this.selected !== null) {
@@ -609,7 +614,7 @@ var script = {
   created() {
     if (typeof window !== 'undefined') {
       document.addEventListener('click', this.clickedOutside);
-      if (this.dropdownPosition === 'auto') window.addEventListener('resize', this.calcDropdownInViewportVertical);
+      if (this.menuPosition === 'auto') window.addEventListener('resize', this.calcDropdownInViewportVertical);
     }
   },
 
@@ -629,7 +634,7 @@ var script = {
   beforeDestroy() {
     if (typeof window !== 'undefined') {
       document.removeEventListener('click', this.clickedOutside);
-      if (this.dropdownPosition === 'auto') window.removeEventListener('resize', this.calcDropdownInViewportVertical);
+      if (this.menuPosition === 'auto') window.removeEventListener('resize', this.calcDropdownInViewportVertical);
     }
 
     if (this.checkInfiniteScroll && this.$refs.dropdown) {

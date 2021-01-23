@@ -3,8 +3,9 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var helpers = require('./helpers.js');
-var plugins = require('./plugins-3f7829d9.js');
-var Icon = require('./Icon-5b4af0b7.js');
+var plugins = require('./plugins-d1c9ea2a.js');
+var Icon = require('./Icon-d8c779b9.js');
+var MatchMediaMixin = require('./MatchMediaMixin-fc00267e.js');
 var trapFocus = require('./trapFocus-8381ef46.js');
 
 //
@@ -24,7 +25,7 @@ var script = {
   directives: {
     trapFocus: trapFocus.directive
   },
-  mixins: [plugins.BaseComponentMixin],
+  mixins: [plugins.BaseComponentMixin, MatchMediaMixin.MatchMediaMixin],
   props: {
     /** Whether modal is active or not, use the .sync modifier (Vue 2.x) or v-model:active (Vue 3.x) to make it two-way binding */
     active: Boolean,
@@ -128,23 +129,24 @@ var script = {
         return helpers.getValueByPath(plugins.config, 'modal.autoFocus', true);
       }
     },
-    rootClass: String,
-    backgroundClass: String,
-    contentClass: String,
-    closeClass: String,
-    fullScreenClass: String,
 
     /** Icon name */
     closeIcon: {
       type: String,
       default: () => {
-        return helpers.getValueByPath(plugins.config, 'close.icon', 'times');
+        return helpers.getValueByPath(plugins.config, 'modal.closeIcon', 'times');
       }
     },
     closeIconSize: {
       type: String,
       default: 'medium'
-    }
+    },
+    rootClass: [String, Function, Array],
+    overlayClass: [String, Function, Array],
+    contentClass: [String, Function, Array],
+    closeClass: [String, Function, Array],
+    fullScreenClass: [String, Function, Array],
+    mobileClass: [String, Function, Array]
   },
 
   data() {
@@ -159,11 +161,13 @@ var script = {
 
   computed: {
     rootClasses() {
-      return [this.computedClass('rootClass', 'o-modal')];
+      return [this.computedClass('rootClass', 'o-modal'), {
+        [this.computedClass('mobileClass', 'o-modal--mobile')]: this.isMatchMedia
+      }];
     },
 
-    backgroundClasses() {
-      return [this.computedClass('backgroundClass', 'o-modal__background')];
+    overlayClasses() {
+      return [this.computedClass('overlayClass', 'o-modal__overlay')];
     },
 
     contentClasses() {
@@ -339,7 +343,7 @@ var script = {
 const __vue_script__ = script;
 
 /* template */
-var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":_vm.animation},on:{"after-enter":_vm.afterEnter,"before-leave":_vm.beforeLeave,"after-leave":_vm.afterLeave}},[(!_vm.destroyed)?_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.isActive),expression:"isActive"},{name:"trap-focus",rawName:"v-trap-focus",value:(_vm.trapFocus),expression:"trapFocus"}],class:_vm.rootClasses,attrs:{"tabindex":"-1","role":_vm.ariaRole,"aria-modal":_vm.ariaModal}},[_c('div',{class:_vm.backgroundClasses,on:{"click":function($event){return _vm.cancel('outside')}}}),_c('div',{class:_vm.contentClasses,style:(_vm.customStyle)},[(_vm.component)?_c(_vm.component,_vm._g(_vm._b({tag:"component",on:{"close":_vm.close}},'component',_vm.props,false),_vm.events)):(_vm.content)?_c('div',[_vm._v(" "+_vm._s(_vm.content)+" ")]):_vm._t("default"),(_vm.showX)?_c('o-icon',{directives:[{name:"show",rawName:"v-show",value:(!_vm.animating),expression:"!animating"}],class:_vm.closeClasses,attrs:{"clickable":"","icon":_vm.closeIcon,"size":_vm.closeIconSize},nativeOn:{"click":function($event){return _vm.cancel('x')}}}):_vm._e()],2)]):_vm._e()])};
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":_vm.animation},on:{"after-enter":_vm.afterEnter,"before-leave":_vm.beforeLeave,"after-leave":_vm.afterLeave}},[(!_vm.destroyed)?_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.isActive),expression:"isActive"},{name:"trap-focus",rawName:"v-trap-focus",value:(_vm.trapFocus),expression:"trapFocus"}],class:_vm.rootClasses,attrs:{"tabindex":"-1","role":_vm.ariaRole,"aria-modal":_vm.ariaModal}},[_c('div',{class:_vm.overlayClasses,on:{"click":function($event){return _vm.cancel('outside')}}}),_c('div',{class:_vm.contentClasses,style:(_vm.customStyle)},[(_vm.component)?_c(_vm.component,_vm._g(_vm._b({tag:"component",on:{"close":_vm.close}},'component',_vm.props,false),_vm.events)):(_vm.content)?_c('div',[_vm._v(" "+_vm._s(_vm.content)+" ")]):_vm._t("default"),(_vm.showX)?_c('o-icon',{directives:[{name:"show",rawName:"v-show",value:(!_vm.animating),expression:"!animating"}],class:_vm.closeClasses,attrs:{"clickable":"","icon":_vm.closeIcon,"size":_vm.closeIconSize},nativeOn:{"click":function($event){return _vm.cancel('x')}}}):_vm._e()],2)]):_vm._e()])};
 var __vue_staticRenderFns__ = [];
 
   /* style */

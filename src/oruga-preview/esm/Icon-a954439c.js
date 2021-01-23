@@ -1,7 +1,5 @@
-'use strict';
-
-var helpers = require('./helpers.js');
-var plugins = require('./plugins-3f7829d9.js');
+import { getValueByPath, merge, defaultIfUndefined } from './helpers.js';
+import { c as config, B as BaseComponentMixin, n as normalizeComponent } from './plugins-b98d7e7d.js';
 
 const mdiIcons = {
   sizes: {
@@ -14,7 +12,7 @@ const mdiIcons = {
 };
 
 const faIcons = () => {
-  const iconComponent = helpers.getValueByPath(plugins.config, 'iconComponent');
+  const iconComponent = getValueByPath(config, 'iconComponent');
   const faIconPrefix = iconComponent ? '' : 'fa-';
   return {
     sizes: {
@@ -51,10 +49,10 @@ const getIcons = () => {
     fab: faIcons(),
     fal: faIcons()
   };
-  const customIconPacks = helpers.getValueByPath(plugins.config, 'customIconPacks');
+  const customIconPacks = getValueByPath(config, 'customIconPacks');
 
   if (customIconPacks) {
-    icons = helpers.merge(icons, customIconPacks, true);
+    icons = merge(icons, customIconPacks, true);
   }
 
   return icons;
@@ -70,7 +68,7 @@ const getIcons = () => {
 
 var script = {
   name: 'OIcon',
-  mixins: [plugins.BaseComponentMixin],
+  mixins: [BaseComponentMixin],
   configField: 'icon',
   props: {
     /**
@@ -126,11 +124,11 @@ var script = {
     /** @ignore */
     both: Boolean,
     // This is used internally
-    rootClass: String,
-    clickableClass: String,
-    spinClass: String,
-    sizeClass: String,
-    variantClass: String
+    rootClass: [String, Function, Array],
+    clickableClass: [String, Function, Array],
+    spinClass: [String, Function, Array],
+    sizeClass: [String, Function, Array],
+    variantClass: [String, Function, Array]
   },
   computed: {
     rootClasses() {
@@ -147,7 +145,7 @@ var script = {
 
     rootStyle() {
       return {
-        transform: `rotate(${helpers.defaultIfUndefined(this.rotation, 0)}deg)`
+        transform: `rotate(${defaultIfUndefined(this.rotation, 0)}deg)`
       };
     },
 
@@ -173,7 +171,7 @@ var script = {
     },
 
     newPack() {
-      return this.pack || helpers.getValueByPath(plugins.config, 'iconPack', 'mdi');
+      return this.pack || getValueByPath(config, 'iconPack', 'mdi');
     },
 
     newVariant() {
@@ -207,7 +205,7 @@ var script = {
 
     useIconComponent() {
       if (this.component) return this.component;
-      const component = helpers.getValueByPath(plugins.config, 'iconComponent');
+      const component = getValueByPath(config, 'iconComponent');
       if (component) return component;
       return null;
     }
@@ -256,7 +254,7 @@ var __vue_staticRenderFns__ = [];
   
 
   
-  const __vue_component__ = /*#__PURE__*/plugins.normalizeComponent(
+  const __vue_component__ = /*#__PURE__*/normalizeComponent(
     { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
     __vue_inject_styles__,
     __vue_script__,
@@ -269,4 +267,4 @@ var __vue_staticRenderFns__ = [];
     undefined
   );
 
-exports.__vue_component__ = __vue_component__;
+export { __vue_component__ as _ };
