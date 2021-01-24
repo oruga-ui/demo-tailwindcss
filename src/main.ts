@@ -91,7 +91,8 @@ Vue.use(Oruga, {
   radio: {
     rootClass: 'radio',
     labelClass: 'radio-label',
-    checkClass: 'radio-check'
+    checkClass: 'radio-check',
+    checkedClass: 'radio-checked'
   },
   field: {
     override: true,

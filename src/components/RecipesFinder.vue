@@ -1,13 +1,13 @@
 <template>
   <div class="divide-y divide-gray-100 border-b border-gray-100">
     <div class="flex space-x-2 py-3">
-      <o-radio v-model="filter" :class="{ 'radio-checked' : filter==='all' }" name="all" native-value="all" @click.native="isOpen = -1">
+      <o-radio v-model="filter" name="all" native-value="all" @click.native="isOpen = -1">
         All
       </o-radio>
-      <o-radio v-model="filter" :class="{ 'radio-checked' : filter==='featured' }" name="featured" native-value="featured" @click.native="isOpen = -1">
+      <o-radio v-model="filter" name="featured" native-value="featured" @click.native="isOpen = -1">
         Featured
       </o-radio>
-      <o-radio v-model="filter" :class="{ 'radio-checked' : filter==='faster' }" name="faster" native-value="faster" @click.native="isOpen = -1">
+      <o-radio v-model="filter" name="faster" native-value="faster" @click.native="isOpen = -1">
         Faster
       </o-radio>
     </div>
