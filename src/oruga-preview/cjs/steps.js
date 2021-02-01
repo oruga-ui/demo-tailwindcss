@@ -3,12 +3,12 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var helpers = require('./helpers.js');
-var plugins = require('./plugins-d1c9ea2a.js');
-var Icon = require('./Icon-d8c779b9.js');
-var Button = require('./Button-4908c70f.js');
-var MatchMediaMixin = require('./MatchMediaMixin-fc00267e.js');
+var plugins = require('./plugins-2885446e.js');
+var Icon = require('./Icon-31dd3104.js');
+var Button = require('./Button-9d58b1dd.js');
+var MatchMediaMixin = require('./MatchMediaMixin-fe914401.js');
 require('./SlotComponent-0a757062.js');
-var TabbedChildMixin = require('./TabbedChildMixin-d3a88988.js');
+var TabbedChildMixin = require('./TabbedChildMixin-e2e50fa6.js');
 
 //
 /**
@@ -100,7 +100,6 @@ var script = {
     stepContentClass: [String, Function, Array],
     stepContentTransitioningClass: [String, Function, Array],
     stepNavigationClass: [String, Function, Array],
-    stepDetailsClass: [String, Function, Array],
     stepTitleClass: [String, Function, Array],
     stepLinkClass: [String, Function, Array],
     stepLinkClickableClass: [String, Function, Array],

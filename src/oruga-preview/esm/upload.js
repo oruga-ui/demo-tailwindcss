@@ -1,6 +1,6 @@
 import './helpers.js';
-import { B as BaseComponentMixin, n as normalizeComponent, e as registerComponent, u as use } from './plugins-b98d7e7d.js';
-import { F as FormElementMixin } from './FormElementMixin-03848984.js';
+import { B as BaseComponentMixin, n as normalizeComponent, e as registerComponent, u as use } from './plugins-948abce9.js';
+import { F as FormElementMixin } from './FormElementMixin-fc713fb1.js';
 import { F as File } from './ssr-1ee179b4.js';
 
 //
@@ -115,7 +115,7 @@ var script = {
     * emit 'input' event and validate
     */
     onFileChange(event) {
-      if (this.disabled || this.loading) return;
+      if (this.disabled) return;
       if (this.dragDrop) this.updateDragDropFocus(false);
       const value = event.target.files || event.dataTransfer.files;
 

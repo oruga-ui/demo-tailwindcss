@@ -3,9 +3,9 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var helpers = require('./helpers.js');
-var plugins = require('./plugins-d1c9ea2a.js');
-var Icon = require('./Icon-d8c779b9.js');
-var MatchMediaMixin = require('./MatchMediaMixin-fc00267e.js');
+var plugins = require('./plugins-2885446e.js');
+var Icon = require('./Icon-31dd3104.js');
+var MatchMediaMixin = require('./MatchMediaMixin-fe914401.js');
 var trapFocus = require('./trapFocus-8381ef46.js');
 
 //
@@ -154,7 +154,7 @@ var script = {
       isActive: this.active || false,
       savedScrollTop: null,
       newWidth: helpers.toCssDimension(this.width),
-      animating: true,
+      animating: !this.active,
       destroyed: !this.active
     };
   },

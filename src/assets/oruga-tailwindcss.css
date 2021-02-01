@@ -40,11 +40,11 @@
 /* Dropdown */
 
 .dropdown-menu {
-  @apply shadow-lg rounded-sm z-10 bg-main-dark text-main dark:text-main-dark dark:bg-main z-50;
+  @apply shadow-lg rounded-sm z-10 bg-main-dark text-main dark:text-main-dark dark:bg-main z-50 w-full;
 }
 
 .dropdown-item {
-  @apply cursor-pointer text-main dark:text-main-dark dark:bg-main;
+  @apply cursor-pointer text-main dark:text-main-dark dark:bg-main w-full p-1;
 }
 
 .dropdown-item-active {

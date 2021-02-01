@@ -3,8 +3,8 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 require('./helpers.js');
-var plugins = require('./plugins-d1c9ea2a.js');
-var FormElementMixin = require('./FormElementMixin-f42a30ee.js');
+var plugins = require('./plugins-2885446e.js');
+var FormElementMixin = require('./FormElementMixin-d665a3fc.js');
 var ssr = require('./ssr-39c7e185.js');
 
 //
@@ -119,7 +119,7 @@ var script = {
     * emit 'input' event and validate
     */
     onFileChange(event) {
-      if (this.disabled || this.loading) return;
+      if (this.disabled) return;
       if (this.dragDrop) this.updateDragDropFocus(false);
       const value = event.target.files || event.dataTransfer.files;
 

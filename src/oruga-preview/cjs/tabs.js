@@ -3,10 +3,10 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var helpers = require('./helpers.js');
-var plugins = require('./plugins-d1c9ea2a.js');
-require('./Icon-d8c779b9.js');
+var plugins = require('./plugins-2885446e.js');
+require('./Icon-31dd3104.js');
 require('./SlotComponent-0a757062.js');
-var TabbedChildMixin = require('./TabbedChildMixin-d3a88988.js');
+var TabbedChildMixin = require('./TabbedChildMixin-e2e50fa6.js');
 
 //
 /**

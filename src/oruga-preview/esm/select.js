@@ -1,9 +1,9 @@
 import './helpers.js';
-import { e as registerComponent, u as use } from './plugins-b98d7e7d.js';
-import './Icon-a954439c.js';
-import './FormElementMixin-03848984.js';
-import { _ as __vue_component__ } from './Select-7f86c08a.js';
-export { _ as OSelect } from './Select-7f86c08a.js';
+import { e as registerComponent, u as use } from './plugins-948abce9.js';
+import './Icon-98338a0a.js';
+import './FormElementMixin-fc713fb1.js';
+import { _ as __vue_component__ } from './Select-f13cdc5d.js';
+export { _ as OSelect } from './Select-f13cdc5d.js';
 
 const Plugin = {
   install(Vue) {

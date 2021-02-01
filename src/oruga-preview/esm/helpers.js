@@ -203,8 +203,8 @@ function getMonthNames(locale = undefined, format = 'long') {
   }
 
   const dtf = new Intl.DateTimeFormat(locale, {
-    month: format,
-    timeZone: 'UTC'
+    month: format // timeZone: 'UTC'
+
   });
   return dates.map(d => dtf.format(d));
 }
@@ -220,18 +220,18 @@ function getWeekdayNames(locale = undefined, firstDayOfWeek = 0, format = 'narro
   const dates = [];
 
   for (let i = 1, j = 0; j < 7; i++) {
-    const d = new Date(Date.UTC(2000, 0, i));
-    const day = d.getUTCDay();
+    const d = new Date(2000, 0, i);
+    const day = d.getDay();
 
-    if (day === firstDayOfWeek + 1 || j > 0) {
+    if (day === firstDayOfWeek || j > 0) {
       dates.push(d);
       j++;
     }
   }
 
   const dtf = new Intl.DateTimeFormat(locale, {
-    weekday: format,
-    timeZone: 'UTC'
+    weekday: format // timeZone: 'UTC'
+
   });
   return dates.map(d => dtf.format(d));
 }

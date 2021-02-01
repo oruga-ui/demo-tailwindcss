@@ -1,6 +1,6 @@
 import { getValueByPath } from './helpers.js';
-import { c as config, n as normalizeComponent, B as BaseComponentMixin, e as registerComponent, u as use } from './plugins-b98d7e7d.js';
-import { _ as __vue_component__$3 } from './Tooltip-a48a672d.js';
+import { c as config, n as normalizeComponent, B as BaseComponentMixin, e as registerComponent, u as use } from './plugins-948abce9.js';
+import { _ as __vue_component__$3 } from './Tooltip-51aa42ae.js';
 
 //
 var script = {
@@ -21,7 +21,7 @@ var script = {
       default: 0
     },
     variant: {
-      variant: String,
+      type: String,
       default: ''
     },
     tooltip: {
@@ -413,10 +413,7 @@ var script$2 = {
      * @values primary, info, success, warning, danger, and any other custom color
      */
     variant: {
-      type: String,
-      default: () => {
-        return getValueByPath(config, 'slider.variant', 'primary');
-      }
+      type: String
     },
 
     /**

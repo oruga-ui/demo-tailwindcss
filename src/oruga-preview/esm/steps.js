@@ -1,10 +1,10 @@
 import { getValueByPath } from './helpers.js';
-import { B as BaseComponentMixin, c as config, n as normalizeComponent, e as registerComponent, u as use } from './plugins-b98d7e7d.js';
-import { _ as __vue_component__$3 } from './Icon-a954439c.js';
-import { _ as __vue_component__$2 } from './Button-a4b81b0c.js';
-import { M as MatchMediaMixin } from './MatchMediaMixin-4e5c9540.js';
+import { B as BaseComponentMixin, c as config, n as normalizeComponent, e as registerComponent, u as use } from './plugins-948abce9.js';
+import { _ as __vue_component__$3 } from './Icon-98338a0a.js';
+import { _ as __vue_component__$2 } from './Button-3823a2f3.js';
+import { M as MatchMediaMixin } from './MatchMediaMixin-bec150b5.js';
 import './SlotComponent-c00a1886.js';
-import { T as TabbedMixin, a as TabbedChildMixin } from './TabbedChildMixin-7a218f90.js';
+import { T as TabbedMixin, a as TabbedChildMixin } from './TabbedChildMixin-2985a02e.js';
 
 //
 /**
@@ -96,7 +96,6 @@ var script = {
     stepContentClass: [String, Function, Array],
     stepContentTransitioningClass: [String, Function, Array],
     stepNavigationClass: [String, Function, Array],
-    stepDetailsClass: [String, Function, Array],
     stepTitleClass: [String, Function, Array],
     stepLinkClass: [String, Function, Array],
     stepLinkClickableClass: [String, Function, Array],

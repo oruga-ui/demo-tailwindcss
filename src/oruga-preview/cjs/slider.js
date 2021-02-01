@@ -3,8 +3,8 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var helpers = require('./helpers.js');
-var plugins = require('./plugins-d1c9ea2a.js');
-var Tooltip = require('./Tooltip-421c706f.js');
+var plugins = require('./plugins-2885446e.js');
+var Tooltip = require('./Tooltip-9ef48b39.js');
 
 //
 var script = {
@@ -25,7 +25,7 @@ var script = {
       default: 0
     },
     variant: {
-      variant: String,
+      type: String,
       default: ''
     },
     tooltip: {
@@ -417,10 +417,7 @@ var script$2 = {
      * @values primary, info, success, warning, danger, and any other custom color
      */
     variant: {
-      type: String,
-      default: () => {
-        return helpers.getValueByPath(plugins.config, 'slider.variant', 'primary');
-      }
+      type: String
     },
 
     /**

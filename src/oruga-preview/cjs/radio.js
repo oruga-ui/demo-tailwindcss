@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 require('./helpers.js');
-var plugins = require('./plugins-d1c9ea2a.js');
+var plugins = require('./plugins-2885446e.js');
 var CheckRadioMixin = require('./CheckRadioMixin-df88dd8e.js');
 
 //

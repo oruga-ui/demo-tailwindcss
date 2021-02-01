@@ -112,7 +112,7 @@ Vue.use(Oruga, {
     itemActiveClass: 'dropdown-item-active'
   },
   loading: {
-    backgroundClass: 'loading-background'
+    overlayClass: 'loading-background'
   },
   icon: {
     override: true,

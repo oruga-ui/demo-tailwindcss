@@ -1,6 +1,6 @@
 import { getValueByPath, removeElement } from './helpers.js';
-import { B as BaseComponentMixin, c as config, n as normalizeComponent, e as registerComponent, u as use } from './plugins-b98d7e7d.js';
-import { M as MatchMediaMixin } from './MatchMediaMixin-4e5c9540.js';
+import { B as BaseComponentMixin, c as config, n as normalizeComponent, e as registerComponent, u as use } from './plugins-948abce9.js';
+import { M as MatchMediaMixin } from './MatchMediaMixin-bec150b5.js';
 
 //
 /**
@@ -109,9 +109,6 @@ var script = {
     reduceClass: [String, Function, Array],
     expandOnHoverClass: [String, Function, Array],
     expandOnHoverFixedClass: [String, Function, Array],
-    mobileReduceClass: [String, Function, Array],
-    mobileHideClass: [String, Function, Array],
-    mobileFullwidthClass: [String, Function, Array],
     variantClass: [String, Function, Array],
     mobileClass: [String, Function, Array]
   },
@@ -148,21 +145,15 @@ var script = {
       }, {
         [this.computedClass('fullheightClass', 'o-side__content--fullheight')]: this.fullheight
       }, {
-        [this.computedClass('fullwidthClass', 'o-side__content--fullwidth')]: this.fullwidth
+        [this.computedClass('fullwidthClass', 'o-side__content--fullwidth')]: this.fullwidth || this.mobile === 'fullwidth' && this.isMatchMedia
       }, {
         [this.computedClass('rightClass', 'o-side__content--right')]: this.right
       }, {
-        [this.computedClass('reduceClass', 'o-side__content--mini')]: this.reduce
+        [this.computedClass('reduceClass', 'o-side__content--mini')]: this.reduce || this.mobile === 'reduced' && this.isMatchMedia
       }, {
         [this.computedClass('expandOnHoverClass', 'o-side__content--mini-expand')]: this.expandOnHover && this.mobile !== 'fullwidth'
       }, {
         [this.computedClass('expandOnHoverFixedClass', 'o-side__content--expand-mini-hover-fixed')]: this.expandOnHover && this.expandOnHoverFixed && this.mobile !== 'fullwidth'
-      }, {
-        [this.computedClass('mobileReduceClass', 'o-side__content--mini-mobile')]: this.mobile === 'reduced' && this.isMatchMedia
-      }, {
-        [this.computedClass('mobileHideClass', 'o-side__content--hidden-mobile')]: this.mobile === 'hidden' && this.isMatchMedia
-      }, {
-        [this.computedClass('mobileFullwidthClass', 'o-side__content--fullwidth-mobile')]: this.mobile === 'fullwidth' && this.isMatchMedia
       }];
     },
 
@@ -180,6 +171,10 @@ var script = {
 
     isAbsolute() {
       return this.position === 'absolute';
+    },
+
+    hideOnMobile() {
+      return this.mobile === 'hidden' && this.isMatchMedia;
     }
 
   },
@@ -354,7 +349,7 @@ var script = {
 const __vue_script__ = script;
 
 /* template */
-var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.rootClasses},[(_vm.overlay && _vm.isOpen)?_c('div',{class:_vm.overlayClasses}):_vm._e(),_c('transition',{attrs:{"name":_vm.transitionName},on:{"before-enter":_vm.beforeEnter,"after-enter":_vm.afterEnter}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.isOpen),expression:"isOpen"}],ref:"sidebarContent",class:_vm.contentClasses},[_vm._t("default")],2)])],1)};
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"show",rawName:"v-show",value:(!_vm.hideOnMobile),expression:"!hideOnMobile"}],class:_vm.rootClasses},[(_vm.overlay && _vm.isOpen)?_c('div',{class:_vm.overlayClasses}):_vm._e(),_c('transition',{attrs:{"name":_vm.transitionName},on:{"before-enter":_vm.beforeEnter,"after-enter":_vm.afterEnter}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.isOpen),expression:"isOpen"}],ref:"sidebarContent",class:_vm.contentClasses},[_vm._t("default")],2)])],1)};
 var __vue_staticRenderFns__ = [];
 
   /* style */

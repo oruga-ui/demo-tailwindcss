@@ -3,9 +3,9 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 require('./helpers.js');
-var plugins = require('./plugins-d1c9ea2a.js');
-require('./Icon-d8c779b9.js');
-var Button = require('./Button-4908c70f.js');
+var plugins = require('./plugins-2885446e.js');
+require('./Icon-31dd3104.js');
+var Button = require('./Button-9d58b1dd.js');
 
 const Plugin = {
   install(Vue) {

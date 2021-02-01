@@ -1,7 +1,7 @@
 import { getValueByPath, toCssDimension, removeElement, merge } from './helpers.js';
-import { B as BaseComponentMixin, c as config, n as normalizeComponent, e as registerComponent, b as registerComponentProgrammatic, u as use, V as VueInstance } from './plugins-b98d7e7d.js';
-import { _ as __vue_component__$1 } from './Icon-a954439c.js';
-import { M as MatchMediaMixin } from './MatchMediaMixin-4e5c9540.js';
+import { B as BaseComponentMixin, c as config, n as normalizeComponent, e as registerComponent, b as registerComponentProgrammatic, u as use, V as VueInstance } from './plugins-948abce9.js';
+import { _ as __vue_component__$1 } from './Icon-98338a0a.js';
+import { M as MatchMediaMixin } from './MatchMediaMixin-bec150b5.js';
 import { d as directive } from './trapFocus-25a621e6.js';
 
 //
@@ -150,7 +150,7 @@ var script = {
       isActive: this.active || false,
       savedScrollTop: null,
       newWidth: toCssDimension(this.width),
-      animating: true,
+      animating: !this.active,
       destroyed: !this.active
     };
   },
