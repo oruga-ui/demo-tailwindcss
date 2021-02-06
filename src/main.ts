@@ -1,4 +1,4 @@
-import './oruga-preview/oruga.css'
+import '@oruga-ui/oruga/dist/oruga.css'
 
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -6,7 +6,7 @@ import App from './App.vue'
 import router from './router'
 
 // @ts-ignore
-import Oruga from './oruga-preview/oruga'
+import Oruga from '@oruga-ui/oruga'
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from "@fortawesome/free-solid-svg-icons";
