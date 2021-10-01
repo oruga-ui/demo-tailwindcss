@@ -11,7 +11,7 @@
       ></o-icon>
       <img
         class="w-14"
-        src="https://www.markusantonwolf.com/media/pages/blog/tailwind-css/265298487-1596675041/tailwind-css-logo.svg"
+        src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg"
       />
     </div>
     <div class="flex">
